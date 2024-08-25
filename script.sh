@@ -40,7 +40,12 @@ echo "======= Export Done ======"
 echo "====== Envsetup Done ======="
 
 # Lunch
-lunch sigma_a10-ap2a-userdebug
+if lunch sigma_a10-ap2a-userdebug; then
+    echo "Lunch sigma_a10-ap2a-userdebug success"
+else
+    echo "Lunch sigma_a10-ap2a-userdebug failed, trying lineage_a10-ap2a-user"
+    lunch lineage_a10-ap2a-user
+fi
 make installclean
 echo "============="
 
