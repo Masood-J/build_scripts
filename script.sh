@@ -9,7 +9,7 @@ echo "Repo init success"
 echo "=================="
 
 # Local manifests
-git clone https://github.com/Masood-J/local_manifests.git -b SigmaDroid-14 .repo/local_manifests
+git clone https://github.com/MA3OOD/local_manifests --depth 1 -b Exynos7885-fourteen .repo/local_manifests 
 echo "============================"
 echo "Local manifest clone success"
 echo "============================"
@@ -40,12 +40,8 @@ echo "======= Export Done ======"
 echo "====== Envsetup Done ======="
 
 # Lunch
-if lunch sigma_a10-ap2a-userdebug; then
-    echo "Lunch sigma_a10-ap2a-userdebug success"
-else
-    echo "Lunch sigma_a10-ap2a-userdebug failed, trying lineage_a10-ap2a-user"
-    lunch lineage_a10-ap2a-user
-fi
+
+lunch lineage_a10-ap2a-user
 make installclean
 echo "============="
 
