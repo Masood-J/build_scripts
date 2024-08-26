@@ -41,7 +41,7 @@ echo "====== Envsetup Done ======="
 
 # Lunch
 
-lunch lineage_a10-ap2a-user
+lunch sigma_a10-ap2a-user
 make installclean
 echo "============="
 
