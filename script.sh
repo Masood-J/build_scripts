@@ -41,7 +41,17 @@ echo "====== Envsetup Done ======="
 
 # Lunch
 
-lunch sigma_a10-ap2a-user
+if lunch sigma_a10-ap2a-user; then
+    echo "Lunch set to sigma_a10-ap2a-user"
+elif lunch sigma_a10-ap2a-userdebug; then
+    echo "Lunch set to sigma_a10-ap2a-userdebug"
+elif lunch sigma_a10-user; then
+    echo "Lunch set to sigma_a10-user"
+else
+    echo "No valid lunch target found!"
+    exit 1
+fi
+
 make installclean
 echo "============="
 
