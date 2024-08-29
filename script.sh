@@ -30,12 +30,7 @@ source build/envsetup.sh
 echo "====== Envsetup Done ======="
 
 # Lunch
-if lunch derp_a10-user; then
-    echo "lunch derp_a10-ap2a-userdebug success"
-else
-    echo "lunch derp_a10-ap2a-userdebug failed, trying lineage_a10-ap2a-user"
-    lunch derp_a10-ap2a-userdebug
-fi
+lunch derp_a10-user
 make installclean
 echo "============="
 
