@@ -35,6 +35,5 @@ echo "====== Envsetup Done ======="
 lunch derp_a10-user
 make installclean
 echo "============="
-
 # Build ROM
-BUILD_BROKEN_MISSING_REQUIRED_MODULES=true mka derp
+mka derp
