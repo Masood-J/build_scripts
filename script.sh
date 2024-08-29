@@ -28,24 +28,7 @@ echo "======= Export Done ======"
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 export TARGET_KERNEL_CLANG_VERSION=r487747c
 export LLVM_IAS=0
-#Kernel Tweaks
-if [ ! -z "$KERNEL_LTO" ]; then
-    export KERNEL_LTO
-else
-    export KERNEL_LTO=thin
-fi
 
-if [ ! -z "$GLOBAL_THINLTO" ]; then
-    export GLOBAL_THINLTO
-else
-    export GLOBAL_THINLTO=true
-fi
-
-if [ ! -z "$USE_THINLTO_CACHE" ]; then
-    export USE_THINLTO_CACHE
-else
-    export USE_THINLTO_CACHE=true
-fi
 
 # Set up build environment
 . build/envsetup.sh
