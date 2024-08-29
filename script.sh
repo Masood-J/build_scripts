@@ -28,6 +28,9 @@ echo "======= Export Done ======"
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 export TARGET_KERNEL_CLANG_VERSION=r487747c
 export LLVM_IAS=0
+export KERNEL_LTO=thin
+export GLOBAL_THINLTO=true
+export USE_THINLTO_CACHE=true
 
 # Set up build environment
 . build/envsetup.sh
