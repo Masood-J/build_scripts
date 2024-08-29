@@ -26,6 +26,7 @@ export BUILD_HOSTNAME=crave
 echo "======= Export Done ======"
 
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
+export TARGET_KERNEL_CLANG_VERSION=r487747c
 
 # Set up build environment
 . build/envsetup.sh
