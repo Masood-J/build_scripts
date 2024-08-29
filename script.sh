@@ -35,4 +35,4 @@ make installclean
 echo "============="
 
 # Build ROM
-mka derp
+BUILD_BROKEN_MISSING_REQUIRED_MODULES=true mka derp
