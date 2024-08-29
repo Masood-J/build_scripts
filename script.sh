@@ -27,6 +27,8 @@ echo "======= Export Done ======"
 
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 export TARGET_KERNEL_CLANG_VERSION=r487747c
+export LLVM_IAS=0
+export CROSS_COMPILE=aarch64-linux-gnu-
 
 # Set up build environment
 . build/envsetup.sh
