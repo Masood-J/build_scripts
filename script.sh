@@ -9,7 +9,7 @@ echo "Repo init success"
 echo "=================="
 
 # Local manifests
-git clone https://github.com/MA3OOD/local_manifests.git -b SigmaDroid-14 .repo/local_manifests
+git clone https://github.com/Masood-J/local_manifests.git -b Sigma-14 .repo/local_manifests
 echo "============================"
 echo "Local manifest clone success"
 echo "============================"
@@ -24,20 +24,17 @@ echo "============="
 export BUILD_USERNAME=Masood•BecomingTooSigma
 export BUILD_HOSTNAME=crave
 echo "======= Export Done ======"
-
+export TARGET_RELEASE=ap2a
+export TARGET_PRODUCT=sigma_a10
+export TARGET_BUILD_VARIANT=user
 # Set up build environment
 . build/envsetup.sh
 echo "====== Envsetup Done ======="
 
 # Lunch
-if lunch sigma_a10-ap2a-userdebug; then
-    echo "Lunch sigma_a10-ap2a-userdebug success"
-else
-    echo "Lunch sigma_a10-ap2a-userdebug failed, trying lineage_a10-ap2a-user"
-    lunch lineage_a10-ap2a-user
-fi
+lunch sigma_a10-ap2a-user || lunch lineage_a10-ap2a-user || lunch sigma_a10 || brunch a10
 make installclean
 echo "============="
 
 # Build ROM
-make bacon
+make bacon 
