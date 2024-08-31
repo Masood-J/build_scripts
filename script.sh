@@ -3,7 +3,7 @@
 rm -rf .repo/local_manifests/
 
 # repo init rom
-repo init -u https://github.com/DerpFest-AOSP/manifest.git -b 14 --git-lfs --depth=1
+repo init -u https://github.com/DerpFest-AOSP/manifest.git -b 13 --git-lfs --depth=1
 echo "=================="
 echo "Repo init success"
 echo "=================="
