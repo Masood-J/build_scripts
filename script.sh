@@ -9,7 +9,7 @@ echo "Repo init success"
 echo "=================="
 
 # Local manifests
-git clone https://github.com/MA3OOD/local_manifests.git -b DerpFest-14 .repo/local_manifests
+git clone https://github.com/MA3OOD/local_manifests.git -b DerpFest-13 .repo/local_manifests
 echo "============================"
 echo "Local manifest clone success"
 echo "============================"
@@ -26,9 +26,6 @@ export BUILD_HOSTNAME=crave
 echo "======= Export Done ======"
 
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
-export TARGET_KERNEL_CLANG_VERSION=r487747c
-export TARGET_KERNEL_SOURCE=/dev/null
-
 
 # Set up build environment
 . build/envsetup.sh
