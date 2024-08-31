@@ -24,12 +24,7 @@ echo "============="
 export BUILD_USERNAME=Masood•JoiningTheDerpFest
 export BUILD_HOSTNAME=crave
 echo "======= Export Done ======"
-
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
-export TARGET_KERNEL_CLANG_VERSION=r487747c
-export TARGET_KERNEL_SOURCE=/dev/null
-
-
 # Set up build environment
 . build/envsetup.sh
 echo "====== Envsetup Done ======="
