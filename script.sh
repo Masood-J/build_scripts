@@ -31,9 +31,17 @@ export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 . build/envsetup.sh
 echo "====== Envsetup Done ======="
 
-# Lunch
-lunch lineage_a10-ap2a-user 
-make installclean
-echo "============="
-# Build ROM
-m evolution 
+# Attempt first lunch target
+if lunch lineage_a10-ap2a-user && m evolution; then
+    echo "Build succeeded with lineage_a10-ap2a-user"
+else
+    echo "First build failed, trying lineage_a10-user"
+    if lunch lineage_a10-user && m evolution; then
+        echo "Build succeeded with lineage_a10-user"
+    else
+        echo "Both builds failed."
+        exit 1
+    fi
+fi
+
+echo "Build process completed."
