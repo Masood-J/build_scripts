@@ -27,7 +27,7 @@ export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 export WITH_GMS=true
 export TARGET_USES_MINI_GAPPS=true
 export TARGET_USES_PICO_GAPPS=false
-. build/envsetup.sh
+source build/envsetup.sh
 echo "====== Envsetup Done ======="
 
 # Lunch
