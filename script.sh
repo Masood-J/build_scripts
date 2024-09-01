@@ -32,7 +32,7 @@ export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 echo "====== Envsetup Done ======="
 
 # Lunch
-lunch lineage_a10-user 
+lunch evolution_a10-user 
 make installclean
 echo "============="
 # Build ROM
