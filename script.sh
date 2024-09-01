@@ -32,7 +32,7 @@ source build/envsetup.sh
 echo "====== Envsetup Done ======="
 
 # Lunch
-lunch lineage_a10-ap2a-user 
+lunch lineage_a10-user 
 make installclean
 echo "============="
 # Build ROM
