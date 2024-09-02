@@ -27,6 +27,7 @@ echo "======= Export Done ======"
 export WITH_GMS=true
 export TARGET_USES_MINI_GAPPS=true
 export TARGET_USES_PICO_GAPPS=false
+export TARGET_PRODUCT_MK=$(pwd)/device/samsung/a10/lineage_a10.mk
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 . build/envsetup.sh
 echo "====== Envsetup Done ======="
