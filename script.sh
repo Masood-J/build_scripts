@@ -3,13 +3,13 @@
 rm -rf .repo/local_manifests/
 
 # repo init rom
-repo init -u https://github.com/Evolution-X/manifest -b udc --git-lfs
+repo init -u https://github.com/LineageOS/android.git -b lineage-21.0 --git-lfs
 echo "=================="
 echo "Repo init success"
 echo "=================="
 
 # Local manifests
-git clone https://github.com/Masood-J/local_manifests.git -b evo-x-udc .repo/local_manifests
+git clone https://github.com/Masood-J/local_manifests.git -b Android-14 .repo/local_manifests
 echo "============================"
 echo "Local manifest clone success"
 echo "============================"
@@ -24,16 +24,12 @@ echo "============="
 echo "======= Export Done ======"
 
 # Set up build environment
-export WITH_GMS=true
-export TARGET_USES_MINI_GAPPS=true
-export TARGET_USES_PICO_GAPPS=false
-export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
-. build/envsetup.sh
+source build/envsetup.sh
 echo "====== Envsetup Done ======="
 
 # Attempt first lunch target
-lunch lineage_a10-user
+lunch lineage_a10-ap2a-user
 make installclean
-m evolution
+mka bacon
 
 echo "Build process completed."
