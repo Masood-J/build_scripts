@@ -32,16 +32,8 @@ export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 echo "====== Envsetup Done ======="
 
 # Attempt first lunch target
-if lunch lineage_a10-ap2a-user && m evolution; then
-    echo "Build succeeded with lineage_a10-ap2a-user"
-else
-    echo "First build failed, trying lineage_a10-user"
-    if lunch lineage_a10-user && m evolution; then
-        echo "Build succeeded with lineage_a10-user"
-    else
-        echo "Both builds failed."
-        exit 1
-    fi
-fi
+lunch lineage_a10-user
+make installclean
+m evolution
 
 echo "Build process completed."
