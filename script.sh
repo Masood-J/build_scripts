@@ -24,9 +24,6 @@ echo "============="
 export BUILD_USERNAME=Masood•JoiningTheDerpFest
 export BUILD_HOSTNAME=crave
 echo "======= Export Done ======"
-
-export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
-
 # Set up build environment
 . build/envsetup.sh
 echo "====== Envsetup Done ======="
