@@ -28,20 +28,12 @@ export WITH_GMS=true
 export TARGET_USES_MINI_GAPPS=true
 export TARGET_USES_PICO_GAPPS=false
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
-export PRODUCT_MAKEFILES_PATH="device/samsung/a10/AndroidProducts.mk"
-export PRODUCT_DEVICE="a10"
-export PRODUCT_NAME="lineage_a10"
-export PRODUCT_MODEL="SM-A105F"
-export PRODUCT_BRAND="samsung"
-export PRODUCT_MANUFACTURER="samsung"
-
 . build/envsetup.sh
 
-add_lunch_combo lineage_a10-user
 echo "====== Envsetup Done ======="
 
 # Attempt first lunch target
-lunch lineage_a10-user
+lunch evolution_a10-user
 make installclean
 m evolution
 
