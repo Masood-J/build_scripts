@@ -29,7 +29,7 @@ echo "======= Export Done ======"
 echo "====== Envsetup Done ======="
 
 # Lunch
-breakfast a10 || lunch lineage_a10-ap2a-user
+breakfast a10 user || lunch lineage_a10-ap2a-user
 make installclean
 echo "============="
 
