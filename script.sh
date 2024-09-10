@@ -119,7 +119,7 @@ fi
 
 # Step 4: Continue with the build process
 
-lunch sigma_a10-user || lunch sigma_a10-ap2a-user || lunch lineage_a10-ap2a-user
+lunch sigma_a10-ap2a-user || lunch sigma_a10-user || lunch lineage_a10-ap2a-user
 make installclean
 echo "============="
 
