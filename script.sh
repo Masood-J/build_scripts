@@ -54,6 +54,8 @@ $(call inherit-product, device/samsung/a10/device.mk)
 # Inherit some common rom stuff
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
+BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
+
 # Rom Specific Flags
 TARGET_FACE_UNLOCK_SUPPORTED := true
 TARGET_SUPPORTS_QUICK_TAP := true
@@ -67,8 +69,8 @@ SIGMA_MAINTAINER="Masood"
 SIGMA_DEVICE="a10"
 
 # Build package
-WITH_GMS := true
-#WITH_GMS := false
+#WITH_GMS := true
+WITH_GMS := false
 
 # Launcher
 TARGET_DEFAULT_PIXEL_LAUNCHER := true
