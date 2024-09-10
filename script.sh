@@ -117,16 +117,9 @@ COMMON_LUNCH_CHOICES := \
 EOF
 fi
 
-# Modify boardcommon.mk to replace lineage_a10 with sigma_a10
-if [ -f "device/samsung/a10/boardcommon.mk" ]; then
-    echo "Replacing lineage_a10 with sigma_a10 in boardcommon.mk..."
-    
-    sed -i 's/lineage_a10/sigma_a10/g' device/samsung/a10/boardcommon.mk
-fi
-
 # Step 4: Continue with the build process
 
-lunch sigma_a10-ap2a-user || lunch sigma_a10-user || lunch lineage_a10-ap2a-user
+lunch sigma_a10-user || lunch sigma_a10-ap2a-user || lunch lineage_a10-ap2a-user
 make installclean
 echo "============="
 
