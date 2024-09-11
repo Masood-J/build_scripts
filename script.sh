@@ -32,15 +32,15 @@ echo "====== Envsetup Done ======="
 
 # Step 3: Modify and rename files after creation
 
-# A20e modifications
-if [ -f "device/samsung/a20e/lineage_a20e.mk" ]; then
-    echo "Renaming and modifying lineage_a20e.mk to sigma_a20e.mk..."
+# A30s modifications
+if [ -f "device/samsung/a30s/lineage_a30s.mk" ]; then
+    echo "Renaming and modifying lineage_a30s.mk to sigma_a30s.mk..."
     
     # Rename the file
-    mv device/samsung/a20e/lineage_a20e.mk device/samsung/a20e/sigma_a20e.mk
+    mv device/samsung/a30s/lineage_a30s.mk device/samsung/a30s/sigma_a30s.mk
     
-    # Overwrite sigma_a20e.mk with the desired contents
-    cat > device/samsung/a20e/sigma_a20e.mk << 'EOF'
+    # Overwrite sigma_a30s.mk with the desired contents
+    cat > device/samsung/a30s/sigma_a30s.mk << 'EOF'
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 
@@ -51,93 +51,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/samsung/a20e/device.mk)
-
-# Inherit some common rom stuff
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
-
-BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
-
-# Rom Specific Flags
-TARGET_FACE_UNLOCK_SUPPORTED := true
-TARGET_SUPPORTS_QUICK_TAP := true
-TARGET_BOOT_ANIMATION_RES := 1080
-SYSTEM_OPTIMIZE_JAVA := true
-SYSTEMUI_OPTIMIZE_JAVA := true
-
-# SigmaDroid Variables
-SIGMA_CHIPSET="exynos7885"
-SIGMA_MAINTAINER="Masood"
-SIGMA_DEVICE="a20e"
-
-# Build package
-WITH_GMS := false
-
-# Launcher
-TARGET_DEFAULT_PIXEL_LAUNCHER := true
-TARGET_PREBUILT_LAWNCHAIR_LAUNCHER := true
-
-# Blur
-TARGET_SUPPORTS_BLUR := false
-
-# Pixel features
-TARGET_ENABLE_PIXEL_FEATURES := false
-
-# Use Google telephony framework
-TARGET_USE_GOOGLE_TELEPHONY := true
-
-# Touch Gestures
-TARGET_SUPPORTS_TOUCHGESTURES := true
-
-# Debugging
-TARGET_INCLUDE_MATLOG := false
-
-# Device identifier
-PRODUCT_DEVICE := a20e
-PRODUCT_NAME := sigma_a20e
-PRODUCT_MODEL := SM-A202K
-PRODUCT_BRAND := samsung
-PRODUCT_MANUFACTURER := samsung
-PRODUCT_GMS_CLIENTID_BASE := android-samsung
-EOF
-fi
-
-# Modify AndroidProducts.mk for A20e
-if [ -f "device/samsung/a20e/AndroidProducts.mk" ]; then
-    echo "Modifying AndroidProducts.mk for A20e..."
-    
-    # Overwrite AndroidProducts.mk with the desired contents
-    cat > device/samsung/a20e/AndroidProducts.mk << 'EOF'
-PRODUCT_MAKEFILES := \
-    device/samsung/a20e/sigma_a20e.mk
-
-COMMON_LUNCH_CHOICES := \
-    sigma_a20e-eng \
-    sigma_a20e-user \
-    sigma_a20e-userdebug
-EOF
-fi
-
-# A30 modifications
-if [ -f "device/samsung/a30/lineage_a30.mk" ]; then
-    echo "Renaming and modifying lineage_a30.mk to sigma_a30.mk..."
-    
-    # Rename the file
-    mv device/samsung/a30/lineage_a30.mk device/samsung/a30/sigma_a30.mk
-    
-    # Overwrite sigma_a30.mk with the desired contents
-    cat > device/samsung/a30/sigma_a30.mk << 'EOF'
-# Copyright (C) 2018 The LineageOS Project
-# SPDX-License-Identifier: Apache-2.0
-
-# Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-
-# Inherit device configuration
-$(call inherit-product, device/samsung/a30/device.mk)
+$(call inherit-product, device/samsung/a30s/device.mk)
 
 # Inherit some common rom stuff
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
@@ -154,7 +68,7 @@ SYSTEMUI_OPTIMIZE_JAVA := true
 # SigmaDroid Variables
 SIGMA_CHIPSET="exynos7904"
 SIGMA_MAINTAINER="Masood"
-SIGMA_DEVICE="a30"
+SIGMA_DEVICE="a30s"
 
 # Build package
 WITH_GMS := false
@@ -179,32 +93,117 @@ TARGET_SUPPORTS_TOUCHGESTURES := true
 TARGET_INCLUDE_MATLOG := false
 
 # Device identifier
-PRODUCT_DEVICE := a30
-PRODUCT_NAME := sigma_a30
-PRODUCT_MODEL := SM-A305F
+PRODUCT_DEVICE := a30s
+PRODUCT_NAME := sigma_a30s
+PRODUCT_MODEL := SM-A307F
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
 EOF
 fi
 
-# Modify AndroidProducts.mk for A30
-if [ -f "device/samsung/a30/AndroidProducts.mk" ]; then
-    echo "Modifying AndroidProducts.mk for A30..."
+# Modify AndroidProducts.mk for A30s
+if [ -f "device/samsung/a30s/AndroidProducts.mk" ]; then
+    echo "Modifying AndroidProducts.mk for A30s..."
     
     # Overwrite AndroidProducts.mk with the desired contents
-    cat > device/samsung/a30/AndroidProducts.mk << 'EOF'
+    cat > device/samsung/a30s/AndroidProducts.mk << 'EOF'
 PRODUCT_MAKEFILES := \
-    device/samsung/a30/sigma_a30.mk
+    device/samsung/a30s/sigma_a30s.mk
 
 COMMON_LUNCH_CHOICES := \
-    sigma_a30-eng \
-    sigma_a30-user \
-    sigma_a30-userdebug
+    sigma_a30s-eng \
+    sigma_a30s-user \
+    sigma_a30s-userdebug
+EOF
+fi
+
+# A40 modifications
+if [ -f "device/samsung/a40/lineage_a40.mk" ]; then
+    echo "Renaming and modifying lineage_a40.mk to sigma_a40.mk..."
+    
+    # Rename the file
+    mv device/samsung/a40/lineage_a40.mk device/samsung/a40/sigma_a40.mk
+    
+    # Overwrite sigma_a40.mk with the desired contents
+    cat > device/samsung/a40/sigma_a40.mk << 'EOF'
+# Copyright (C) 2018 The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
+# Inherit device configuration
+$(call inherit-product, device/samsung/a40/device.mk)
+
+# Inherit some common rom stuff
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+
+BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
+
+# Rom Specific Flags
+TARGET_FACE_UNLOCK_SUPPORTED := true
+TARGET_SUPPORTS_QUICK_TAP := true
+TARGET_BOOT_ANIMATION_RES := 1080
+SYSTEM_OPTIMIZE_JAVA := true
+SYSTEMUI_OPTIMIZE_JAVA := true
+
+# SigmaDroid Variables
+SIGMA_CHIPSET="exynos7885"
+SIGMA_MAINTAINER="Masood"
+SIGMA_DEVICE="a40"
+
+# Build package
+WITH_GMS := false
+
+# Launcher
+TARGET_DEFAULT_PIXEL_LAUNCHER := true
+TARGET_PREBUILT_LAWNCHAIR_LAUNCHER := true
+
+# Blur
+TARGET_SUPPORTS_BLUR := false
+
+# Pixel features
+TARGET_ENABLE_PIXEL_FEATURES := false
+
+# Use Google telephony framework
+TARGET_USE_GOOGLE_TELEPHONY := true
+
+# Touch Gestures
+TARGET_SUPPORTS_TOUCHGESTURES := true
+
+# Debugging
+TARGET_INCLUDE_MATLOG := false
+
+# Device identifier
+PRODUCT_DEVICE := a40
+PRODUCT_NAME := sigma_a40
+PRODUCT_MODEL := SM-A405FN
+PRODUCT_BRAND := samsung
+PRODUCT_MANUFACTURER := samsung
+PRODUCT_GMS_CLIENTID_BASE := android-samsung
+EOF
+fi
+
+# Modify AndroidProducts.mk for A40
+if [ -f "device/samsung/a40/AndroidProducts.mk" ]; then
+    echo "Modifying AndroidProducts.mk for A40..."
+    
+    # Overwrite AndroidProducts.mk with the desired contents
+    cat > device/samsung/a40/AndroidProducts.mk << 'EOF'
+PRODUCT_MAKEFILES := \
+    device/samsung/a40/sigma_a40.mk
+
+COMMON_LUNCH_CHOICES := \
+    sigma_a40-eng \
+    sigma_a40-user \
+    sigma_a40-userdebug
 EOF
 fi
 
 # Step 4: Continue with the build process
 
-lunch sigma_a20e-ap2a-user || lunch sigma_a20e-user && make installclean && make bacon && lunch sigma_a30-ap2a-user || lunch sigma_a30-user && make installclean && make bacon
-
+lunch sigma_a30s-ap2a-user || lunch sigma_a30s-user && make installclean && make bacon && lunch sigma_a40-ap2a-user || lunch sigma_a40-user && make installclean && make bacon
