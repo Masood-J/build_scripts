@@ -28,17 +28,26 @@ echo "======= Export Done ======"
 # Set up build environment
 . build/envsetup.sh
 echo "====== Envsetup Done ======="
+
+# Device models mapping
+declare -A device_models=(
+    [a20e]="SM-A202K"
+    [a30]="SM-A305F"
+    [a30s]="SM-A307F"
+    [a40]="SM-A405F"
+)
+
 # Step 3: Modify and rename files after creation
 
-# Rename lineage_a20.mk to sigma_a20.mk and update its contents
-if [ -f "device/samsung/a20/lineage_a20.mk" ]; then
-    echo "Renaming and modifying lineage_a20.mk to sigma_a20.mk..."
-    
-    # Rename the file
-    mv device/samsung/a20/lineage_a20.mk device/samsung/a20/sigma_a20.mk
-    
-    # Overwrite sigma_a20.mk with the desired contents
-    cat > device/samsung/a20/sigma_a20.mk << 'EOF'
+for device in a20e a30 a30s a40; do
+    if [ -f "device/samsung/$device/lineage_$device.mk" ]; then
+        echo "Renaming and modifying lineage_$device.mk to sigma_$device.mk..."
+        
+        # Rename the file
+        mv "device/samsung/$device/lineage_$device.mk" "device/samsung/$device/sigma_$device.mk"
+        
+        # Overwrite sigma_$device.mk with the desired contents
+        cat > "device/samsung/$device/sigma_$device.mk" << EOF
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 
@@ -49,7 +58,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/samsung/a20/device.mk)
+$(call inherit-product, device/samsung/$device/device.mk)
 
 # Inherit some common rom stuff
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
@@ -66,7 +75,7 @@ SYSTEMUI_OPTIMIZE_JAVA := true
 # SigmaDroid Variables
 SIGMA_CHIPSET="exynos7885"
 SIGMA_MAINTAINER="Masood"
-SIGMA_DEVICE="a20"
+SIGMA_DEVICE="$device"
 
 # Build package
 #WITH_GMS := true
@@ -92,36 +101,40 @@ TARGET_SUPPORTS_TOUCHGESTURES := true
 TARGET_INCLUDE_MATLOG := false
 
 # Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := a20
-PRODUCT_NAME := sigma_a20
-PRODUCT_MODEL := SM-A205F
+PRODUCT_DEVICE := $device
+PRODUCT_NAME := sigma_$device
+PRODUCT_MODEL := ${device_models[$device]}
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
 EOF
-fi
+    fi
+done
 
-# Modify AndroidProducts.mk to include sigma_a20 lunch choices
-if [ -f "device/samsung/a20/AndroidProducts.mk" ]; then
-    echo "Modifying AndroidProducts.mk to include sigma_a20..."
-    
-    # Overwrite AndroidProducts.mk with the desired contents
-    cat > device/samsung/a20/AndroidProducts.mk << 'EOF'
+# Modify AndroidProducts.mk to include sigma_* lunch choices for a20e, a30, a30s, and a40
+for device in a20e a30 a30s a40; do
+    if [ -f "device/samsung/$device/AndroidProducts.mk" ]; then
+        echo "Modifying AndroidProducts.mk to include sigma_$device..."
+        
+        # Overwrite AndroidProducts.mk with the desired contents
+        cat > "device/samsung/$device/AndroidProducts.mk" << EOF
 PRODUCT_MAKEFILES := \
-    device/samsung/a20/sigma_a20.mk
+    device/samsung/$device/sigma_$device.mk
 
 COMMON_LUNCH_CHOICES := \
-    sigma_a20-eng \
-    sigma_a20-user \
-    sigma_a20-userdebug
+    sigma_$device-eng \
+    sigma_$device-user \
+    sigma_$device-userdebug
 EOF
-fi
+    fi
+done
 
-# Step 4: Continue with the build process
-
-lunch sigma_a20-ap2a-user || lunch sigma_a20-user
-make installclean
-echo "============="
-
-# Build ROM
-make bacon
+# Step 4: Build for each device
+for device in a20e a30 a30s a40; do
+    lunch sigma_$device-ap2a-user
+    make installclean
+    make bacon
+    echo "======================"
+    echo "Build for $device completed!"
+    echo "======================"
+done
