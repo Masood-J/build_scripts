@@ -131,7 +131,7 @@ done
 
 # Step 4: Build for each device
 for device in a20e a30 a30s a40; do
-    lunch sigma_$device-ap2a-user
+    lunch sigma_$device-ap2a-user || lunch sigma_$device-user
     make installclean
     make bacon
     echo "======================"
