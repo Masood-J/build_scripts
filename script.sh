@@ -24,8 +24,8 @@ echo "============="
 echo "======= Export Done ======"
 
 # Set up build environment
-export WITH_GMS=true
-export TARGET_USES_MINI_GAPPS=true
+export WITH_GMS=false
+export TARGET_USES_MINI_GAPPS=false
 export TARGET_USES_PICO_GAPPS=false
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 . build/envsetup.sh
@@ -33,7 +33,7 @@ export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 echo "====== Envsetup Done ======="
 
 # Attempt first lunch target
-lunch evolution_a10-user || lunch lineage_a10-user
+lunch lineage_a10-user
 make installclean
 m evolution
 
