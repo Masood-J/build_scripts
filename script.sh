@@ -31,6 +31,17 @@ export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 . build/envsetup.sh
 echo "====== Envsetup Done ======="
 
+# List all files in a10 directory
+echo "Listing all files in the a10 directory:"
+if [ -d "device/samsung/a10" ]; then
+    find device/samsung/a10 -type f
+else
+    echo "a10 directory not found."
+fi
+echo "====================="
+echo "File listing complete."
+echo "====================="
+
 # Modify lineage_a10.mk
 if [ -f "device/samsung/a10/lineage_a10.mk" ]; then
     echo "Modifying lineage_a10.mk..."
