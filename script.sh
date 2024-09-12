@@ -206,4 +206,20 @@ fi
 
 # Step 4: Continue with the build process
 
-lunch sigma_a30s-ap2a-user || lunch sigma_a30s-user && make installclean && make bacon && lunch sigma_a40-ap2a-user || lunch sigma_a40-user && make installclean && make bacon
+# Build for A30s
+lunch sigma_a30s-ap2a-user || lunch sigma_a30s-user
+if [ $? -eq 0 ]; then
+    make installclean && make bacon
+else
+    echo "Error with the A30s lunch command."
+    exit 1
+fi
+
+# Build for A40
+lunch sigma_a40-ap2a-user || lunch sigma_a40-user
+if [ $? -eq 0 ]; then
+    make installclean && make bacon
+else
+    echo "Error with the A40 lunch command."
+    exit 1
+fi
