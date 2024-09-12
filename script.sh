@@ -24,7 +24,6 @@ echo "============="
 export BUILD_USERNAME=Masood•BecomingTooSigma
 export BUILD_HOSTNAME=crave
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
-export DISABLE_RESOURCE_DUPLICATION_CHECK=true
 echo "======= Export Done ======"
 
 # Set up build environment
