@@ -31,16 +31,14 @@ export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 . build/envsetup.sh
 echo "====== Envsetup Done ======="
 
-# List all files in a10 directory
-echo "Listing all files in the a10 directory:"
-if [ -d "device/samsung/a10" ]; then
-    find device/samsung/a10 -type f
+# Rename pixel-style_a10.mk to lineage_a10.mk after envsetup
+if [ -f "device/samsung/a10/pixel-style_a10.mk" ]; then
+    echo "Renaming pixel-style_a10.mk to lineage_a10.mk..."
+    mv device/samsung/a10/pixel-style_a10.mk device/samsung/a10/lineage_a10.mk
+    echo "Rename successful."
 else
-    echo "a10 directory not found."
+    echo "pixel-style_a10.mk not found. Skipping rename."
 fi
-echo "====================="
-echo "File listing complete."
-echo "====================="
 
 # Modify lineage_a10.mk
 if [ -f "device/samsung/a10/lineage_a10.mk" ]; then
