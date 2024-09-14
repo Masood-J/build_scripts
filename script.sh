@@ -28,7 +28,10 @@ export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 # Set up build environment
 . build/envsetup.sh
 echo "====== Envsetup Done ======="
-
+# List all files in a10 directory
+echo "Listing all files in the a10 directory:"
+if [ -d "device/samsung/a10" ]; then
+    find device/samsung/a10 -type f
 # Lunch
 lunch derp_a10-user
 make installclean
