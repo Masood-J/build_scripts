@@ -93,3 +93,7 @@ COMMON_LUNCH_CHOICES := \
     euclid_a10-userdebug
 EOF
 fi
+
+lunch euclid_a10-ap2a-user
+make installclean
+m euclid
