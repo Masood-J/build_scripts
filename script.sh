@@ -25,7 +25,6 @@ export BUILD_USERNAME=Masood•JoiningTheDerpFest
 export BUILD_HOSTNAME=crave
 echo "======= Export Done ======"
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
-export KERNEL_CLANG_VERSION := clang-r487747c
 # Set up build environment
 . build/envsetup.sh
 echo "====== Envsetup Done ======="
