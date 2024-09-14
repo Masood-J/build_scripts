@@ -21,6 +21,7 @@ echo "Sync success"
 echo "============="
 
 # Export
+export EUCLID_MAINTAINER=Masood
 export BUILD_HOSTNAME=crave
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 echo "======= Export Done ======"
@@ -30,6 +31,12 @@ echo "======= Export Done ======"
 echo "====== Envsetup Done ======="
 
 # Step 3: Modify and rename files after creation
+
+# List all files in a10 directory
+echo "Listing all files in the a10 directory:"
+if [ -d "device/samsung/a10" ]; then
+    find device/samsung/a10 -type f
+fi
 
 # A10 modifications
 if [ -f "device/samsung/a10/lineage_a10.mk" ]; then
