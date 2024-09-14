@@ -32,6 +32,7 @@ echo "====== Envsetup Done ======="
 echo "Listing all files in the a10 directory:"
 if [ -d "device/samsung/a10" ]; then
     find device/samsung/a10 -type f
+fi
 # Lunch
 lunch derp_a10-user
 make installclean
