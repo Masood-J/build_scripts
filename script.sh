@@ -46,7 +46,7 @@ if [ -f "device/samsung/a10/lineage_a10.mk" ]; then
     mv device/samsung/a10/lineage_a10.mk device/samsung/a10/euclid_a10.mk
     
     # Overwrite sigma_a10.mk with the desired contents
-    cat > device/samsung/a10/sigma_a10.mk << 'EOF'
+    cat > device/samsung/a10/euclid_a10.mk << 'EOF'
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 
