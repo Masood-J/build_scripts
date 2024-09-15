@@ -58,6 +58,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/samsung/a10/device.mk)
+$(call inherit-product, vendor/euclid/config/common_full_phone.mk)
 
 BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
 
