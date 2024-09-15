@@ -84,7 +84,6 @@ $(call inherit-product, vendor/gms/gms_full.mk)
 endif
 endif
 
-BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := a10
