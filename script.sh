@@ -24,9 +24,9 @@ echo "============="
 echo "======= Export Done ======"
 
 # Set up build environment
-export WITH_GMS=false
+export WITH_GMS=true
 export TARGET_USES_MINI_GAPPS=false
-export TARGET_USES_PICO_GAPPS=false
+export TARGET_USES_PICO_GAPPS=true
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 . build/envsetup.sh
 echo "====== Envsetup Done ======="
@@ -73,7 +73,7 @@ TARGET_SCREEN_HEIGHT := 1520
 TARGET_SCREEN_WIDTH := 720
 
 # GMS
-WITH_GMS ?= false
+WITH_GMS ?= true
 ifeq ($(WITH_GMS),true)
 ifeq ($(TARGET_USES_MINI_GAPPS),true)
 $(call inherit-product, vendor/gms/gms_mini.mk)
