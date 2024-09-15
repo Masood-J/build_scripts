@@ -277,16 +277,6 @@ fi
 
 
 # Attempt first lunch target
-lunch lineage_a10-user
-make installclean
-m evolution
-
-lunch lineage_a20-user
-make installclean
-m evolution
-
-lunch lineage_a20e-user
-make installclean
-m evolution
+lunch lineage_a10-user && make installclean && m evolution && lunch lineage_a20-user && make installclean && m evolution && lunch lineage_a20e-user && make installclean && m evolution
 
 echo "Build process completed."
