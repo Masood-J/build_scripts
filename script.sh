@@ -62,7 +62,7 @@ $(call inherit-product, vendor/euclid/config/common_full_phone.mk)
 
 BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
 
-
+EUCLID_BUILD_TYPE := UNOFFICIAL
 EUCLID_MAINTAINER := Masood
 EUCLID_GAPPS := false
 TARGET_SUPPORTS_GOOGLE_RECORDER := false
