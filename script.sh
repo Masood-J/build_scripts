@@ -57,8 +57,20 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit device configuration
 $(call inherit-product, device/samsung/a10/device.mk)
 
+# Inherit from common lineage configuration
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+
 # ROM Flags
 BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
+EVO_BUILD_TYPE := Unofficial
+TARGET_DISABLE_EPPE := true
+TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_BUILD_APERTURE_CAMERA := false
+TARGET_HAS_UDFPS := true
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 1520
+TARGET_SCREEN_WIDTH := 720
 
 # GMS
 WITH_GMS ?= false
