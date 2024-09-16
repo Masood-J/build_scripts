@@ -125,7 +125,7 @@ fi
 if [ -f "device/samsung/a20/lineage_a20.mk" ]; then
     echo "Modifying lineage_a20.mk..."
 
-    cat > device/samsung/a10/lineage_a20.mk << 'EOF'
+    cat > device/samsung/a20/lineage_a20.mk << 'EOF'
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 
