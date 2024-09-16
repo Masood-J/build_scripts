@@ -25,7 +25,7 @@ echo "======= Export Done ======"
 
 # Set up build environment
 export WITH_GMS=true
-export TARGET_USES_PICO_GAPPS=true
+export TARGET_USES_MINI_GAPPS=true
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 . build/envsetup.sh
 echo "====== Envsetup Done ======="
