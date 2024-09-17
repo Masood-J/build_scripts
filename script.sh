@@ -47,6 +47,11 @@ if [ -f "device/samsung/a10/lineage_a10.mk" ]; then
     
     # Rename the file
     mv device/samsung/a10/lineage_a10.mk device/samsung/a10/miku_a10.mk
+
+    if [ -f "device/samsung/a10/aosp_a10.mk" ]; then
+    echo "Renaming and modifying aosp_a10.mk to miku_a10.mk..."
+
+     mv device/samsung/a10/aosp_a10.mk device/samsung/a10/miku_a10.mk
     
     # Overwrite sigma_a30s.mk with the desired contents
     cat > device/samsung/a10/miku_a10.mk << 'EOF'
