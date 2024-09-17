@@ -35,6 +35,12 @@ echo "====== Envsetup Done ======="
 
 # Step 3: Modify and rename files after creation
 
+# List all files in a10 directory
+echo "Listing all files in the a10 directory:"
+if [ -d "device/samsung/a10" ]; then
+    find device/samsung/a10 -type f
+fi
+
 # A30s modifications
 if [ -f "device/samsung/a10/lineage_a10.mk" ]; then
     echo "Renaming and modifying lineage_a10.mk to miku_a10.mk..."
