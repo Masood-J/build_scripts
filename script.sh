@@ -41,22 +41,16 @@ if [ -d "device/samsung/a10" ]; then
     find device/samsung/a10 -type f
 fi
 
-# A30s modifications
-# Check if either lineage_a10.mk or aosp_a10.mk exists, then rename
-# Modify and rename files in the A10 device folder
+# Check if either lineage_a10.mk or aosp_a10.mk exists and rename or create miku_a10.mk
 if [ -f "device/samsung/a10/lineage_a10.mk" ]; then
     echo "Renaming lineage_a10.mk to miku_a10.mk..."
     mv device/samsung/a10/lineage_a10.mk device/samsung/a10/miku_a10.mk
-fi
-
-if [ -f "device/samsung/a10/aosp_a10.mk" ]; then
+elif [ -f "device/samsung/a10/aosp_a10.mk" ]; then
     echo "Renaming aosp_a10.mk to miku_a10.mk..."
     mv device/samsung/a10/aosp_a10.mk device/samsung/a10/miku_a10.mk
-fi
-
-# Overwrite miku_a10.mk with the desired contents
-if [ -f "device/samsung/a10/miku_a10.mk" ]; then
-    echo "Modifying miku_a10.mk..."
+else
+    # Create miku_a10.mk if neither of the files exist
+    echo "Creating miku_a10.mk..."
     cat > device/samsung/a10/miku_a10.mk << 'EOF'
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
@@ -90,7 +84,7 @@ PRODUCT_GMS_CLIENTID_BASE := android-samsung
 EOF
 fi
 
-# Modify AndroidProducts.mk for A30s
+# Modify AndroidProducts.mk for A10
 if [ -f "device/samsung/a10/AndroidProducts.mk" ]; then
     echo "Modifying AndroidProducts.mk for A10..."
     
@@ -105,7 +99,6 @@ COMMON_LUNCH_CHOICES := \
     miku_a10-userdebug
 EOF
 fi
-
 
 # Step 4: Continue with the build process
 
