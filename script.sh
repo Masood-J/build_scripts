@@ -26,6 +26,7 @@ export BUILD_HOSTNAME=crave
 export MIKU_MASTER=Masood
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 export MIKU_GAPPS=false
+export TARGET_WITH_KERNEL_SU=true
 echo "======= Export Done ======"
 
 # Set up build environment
