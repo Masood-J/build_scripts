@@ -43,14 +43,15 @@ fi
 
 # A30s modifications
 # Check if either lineage_a10.mk or aosp_a10.mk exists, then rename
+# Modify and rename files in the A10 device folder
 if [ -f "device/samsung/a10/lineage_a10.mk" ]; then
     echo "Renaming lineage_a10.mk to miku_a10.mk..."
     mv device/samsung/a10/lineage_a10.mk device/samsung/a10/miku_a10.mk
-elif [ -f "device/samsung/a10/aosp_a10.mk" ]; then
+fi
+
+if [ -f "device/samsung/a10/aosp_a10.mk" ]; then
     echo "Renaming aosp_a10.mk to miku_a10.mk..."
     mv device/samsung/a10/aosp_a10.mk device/samsung/a10/miku_a10.mk
-else
-    echo "Neither lineage_a10.mk nor aosp_a10.mk was found."
 fi
 
 # Overwrite miku_a10.mk with the desired contents
