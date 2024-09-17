@@ -3,7 +3,7 @@
 rm -rf .repo/local_manifests/
 
 # repo init rom
-repo init -u https://github.com/crdroidandroid/android.git -b 14.0 --git-lfs
+repo init -u https://github.com/Miku-UI/manifesto -b Udon_v2
 echo "=================="
 echo "Repo init success"
 echo "=================="
@@ -23,7 +23,10 @@ echo "============="
 # Export
 export BUILD_USERNAME=Masood
 export BUILD_HOSTNAME=crave
+export MIKU_MASTER=Masood
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
+export MIKU_GAPPS=false
+export TARGET_WITH_KERNEL_SU=true
 echo "======= Export Done ======"
 
 # Set up build environment
@@ -41,11 +44,20 @@ fi
 # A30s modifications
 # Check if either lineage_a10.mk or aosp_a10.mk exists, then rename
 # Modify and rename files in the A10 device folder
-
-# Overwrite lineage_a10.mk with the desired contents
 if [ -f "device/samsung/a10/lineage_a10.mk" ]; then
-    echo "Modifying lineage_a10.mk..."
-    cat > device/samsung/a10/lineage_a10.mk << 'EOF'
+    echo "Renaming lineage_a10.mk to miku_a10.mk..."
+    mv device/samsung/a10/lineage_a10.mk device/samsung/a10/miku_a10.mk
+fi
+
+if [ -f "device/samsung/a10/aosp_a10.mk" ]; then
+    echo "Renaming aosp_a10.mk to miku_a10.mk..."
+    mv device/samsung/a10/aosp_a10.mk device/samsung/a10/miku_a10.mk
+fi
+
+# Overwrite miku_a10.mk with the desired contents
+if [ -f "device/samsung/a10/miku_a10.mk" ]; then
+    echo "Modifying miku_a10.mk..."
+    cat > device/samsung/a10/miku_a10.mk << 'EOF'
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 
@@ -58,12 +70,19 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit device configuration
 $(call inherit-product, device/samsung/a10/device.mk)
 
-# Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common rom stuff
+$(call inherit-product, vendor/miku/build/product/miku_product.mk)
+
+BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
+
+# Rom Specific Flags
+MIKU_GAPPS := false
+
+MIKU_MASTER := Masood
 
 # Device identifier
 PRODUCT_DEVICE := a10
-PRODUCT_NAME := lineage_a10
+PRODUCT_NAME := miku_a10
 PRODUCT_MODEL := SM-A105F
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
@@ -71,19 +90,19 @@ PRODUCT_GMS_CLIENTID_BASE := android-samsung
 EOF
 fi
 
-# Modify AndroidProducts.mk for A10
+# Modify AndroidProducts.mk for A30s
 if [ -f "device/samsung/a10/AndroidProducts.mk" ]; then
     echo "Modifying AndroidProducts.mk for A10..."
     
     # Overwrite AndroidProducts.mk with the desired contents
     cat > device/samsung/a10/AndroidProducts.mk << 'EOF'
 PRODUCT_MAKEFILES := \
-    device/samsung/a10/lineage_a10.mk
+    device/samsung/a10/miku_a10.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_a10-eng \
-    lineage_a10-user \
-    lineage_a10-userdebug
+    miku_a10-eng \
+    miku_a10-user \
+    miku_a10-userdebug
 EOF
 fi
 
@@ -91,6 +110,6 @@ fi
 # Step 4: Continue with the build process
 
 # Build for A10
-lunch lineage-ap2a-user
+lunch miku_a10-ap2a-user
 make installclean
-mka bacon
+make diva
