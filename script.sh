@@ -42,18 +42,20 @@ if [ -d "device/samsung/a10" ]; then
 fi
 
 # A30s modifications
+# Check if either lineage_a10.mk or aosp_a10.mk exists, then rename
 if [ -f "device/samsung/a10/lineage_a10.mk" ]; then
-    echo "Renaming and modifying lineage_a10.mk to miku_a10.mk..."
-    
-    # Rename the file
+    echo "Renaming lineage_a10.mk to miku_a10.mk..."
     mv device/samsung/a10/lineage_a10.mk device/samsung/a10/miku_a10.mk
+elif [ -f "device/samsung/a10/aosp_a10.mk" ]; then
+    echo "Renaming aosp_a10.mk to miku_a10.mk..."
+    mv device/samsung/a10/aosp_a10.mk device/samsung/a10/miku_a10.mk
+else
+    echo "Neither lineage_a10.mk nor aosp_a10.mk was found."
+fi
 
-    if [ -f "device/samsung/a10/aosp_a10.mk" ]; then
-    echo "Renaming and modifying aosp_a10.mk to miku_a10.mk..."
-
-     mv device/samsung/a10/aosp_a10.mk device/samsung/a10/miku_a10.mk
-    
-    # Overwrite sigma_a30s.mk with the desired contents
+# Overwrite miku_a10.mk with the desired contents
+if [ -f "device/samsung/a10/miku_a10.mk" ]; then
+    echo "Modifying miku_a10.mk..."
     cat > device/samsung/a10/miku_a10.mk << 'EOF'
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
