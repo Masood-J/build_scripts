@@ -42,10 +42,10 @@ fi
 # Check if either lineage_a10.mk or aosp_a10.mk exists, then rename
 # Modify and rename files in the A10 device folder
 
-# Overwrite miku_a10.mk with the desired contents
+# Overwrite lineage_a10.mk with the desired contents
 if [ -f "device/samsung/a10/lineage_a10.mk" ]; then
     echo "Modifying lineage_a10.mk..."
-    cat > device/samsung/a10/miku_a10.mk << 'EOF'
+    cat > device/samsung/a10/lineage_a10.mk << 'EOF'
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 
@@ -61,8 +61,6 @@ $(call inherit-product, device/samsung/a10/device.mk)
 # Inherit some common LineageOS stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-
-
 # Device identifier
 PRODUCT_DEVICE := a10
 PRODUCT_NAME := lineage_a10
@@ -73,7 +71,7 @@ PRODUCT_GMS_CLIENTID_BASE := android-samsung
 EOF
 fi
 
-# Modify AndroidProducts.mk for A30s
+# Modify AndroidProducts.mk for A10
 if [ -f "device/samsung/a10/AndroidProducts.mk" ]; then
     echo "Modifying AndroidProducts.mk for A10..."
     
