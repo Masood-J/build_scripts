@@ -4,7 +4,7 @@
 rm -rf .repo/local_manifests/
 
 # Initialize the repo
-repo init -u https://github.com/LineageOS/android.git -b lineage-21.0 --git-lfs
+repo init -u https://github.com/DerpFest-AOSP/manifest.git -b 14
 echo "=================="
 echo "Repo init success"
 echo "=================="
@@ -30,6 +30,6 @@ echo "======= Export Done ======"
 . build/envsetup.sh
 echo "====== Envsetup Done ======="
 # Build for A10
-lunch lineage_a10-ap2a-user
+lunch derp_a10-user
 make installclean
-mka bacon
+mka derp
