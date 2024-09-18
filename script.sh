@@ -91,7 +91,7 @@ fi
 # Step 4: Continue with the build process
 
 # Build for A10
-lunch lineage-ap2a-user
+lunch lineage_a10-ap2a-user
 make installclean
 mka bacon
 
