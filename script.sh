@@ -178,5 +178,5 @@ COMMON_LUNCH_CHOICES := \
 EOF
 
 # Build for A10
-lunch lineage_a20-ap2a-user && make installclean && mka bacon && lunch lineage_a20e-ap2a-user && make installclean && mka bacon && lunch lineage_a30-ap2a-user && make installclean && mka bacon lunch && lineage_a30s-ap2a-user && make installclean && mka bacon && lunch lineage_a40-ap2a-user && make installclean && mka bacon
+lunch lineage_a20-ap2a-user && make installclean && mka bacon && lunch lineage_a20e-ap2a-user && make installclean && mka bacon && lunch lineage_a30-ap2a-user && make installclean && mka bacon && lineage_a30s-ap2a-user && make installclean && mka bacon && lunch lineage_a40-ap2a-user && make installclean && mka bacon
 
