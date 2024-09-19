@@ -28,14 +28,9 @@ echo "======= Export Done ======"
 # Set up build environment
 . build/envsetup.sh
 echo "====== Envsetup Done ======="
-# Step 3: Modify and rename files after creation
-# List all files in a10 directory
-echo "Listing all files in the a10 directory:"
-if [ -d "device/samsung/a10" ]; then
-    find device/samsung/a10 -type f
-fi
 
-    cat > device/samsung/a10/lineage_a10.mk << 'EOF'
+# Create and modify lineage_a10.mk
+cat > device/samsung/a10/lineage_a10.mk << 'EOF'
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 # Inherit from those products. Most specific first.
@@ -55,13 +50,9 @@ PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
 EOF
-fi
+
 # Modify AndroidProducts.mk for A10
-if [ -f "device/samsung/a10/AndroidProducts.mk" ]; then
-    echo "Modifying AndroidProducts.mk for A10..."
-    
-    # Overwrite AndroidProducts.mk with the desired contents
-    cat > device/samsung/a10/AndroidProducts.mk << 'EOF'
+cat > device/samsung/a10/AndroidProducts.mk << 'EOF'
 PRODUCT_MAKEFILES := \
     device/samsung/a10/lineage_a10.mk
 COMMON_LUNCH_CHOICES := \
@@ -69,11 +60,8 @@ COMMON_LUNCH_CHOICES := \
     lineage_a10-user \
     lineage_a10-userdebug
 EOF
-fi
-# Step 4: Continue with the build process
 
 # Build for A10
 lunch lineage_a10-ap2a-user
 make installclean
 mka bacon
-
