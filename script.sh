@@ -72,7 +72,7 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 # Device identifier
 PRODUCT_DEVICE := a20e
 PRODUCT_NAME := lineage_a20e
-PRODUCT_MODEL := SM-A207K
+PRODUCT_MODEL := SM-A202K
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
