@@ -140,7 +140,7 @@ EOF
 # Modify AndroidProducts.mk for A10
 cat > device/samsung/a30s/AndroidProducts.mk << 'EOF'
 PRODUCT_MAKEFILES := \
-    device/samsung/a10/lineage_a10.mk
+    device/samsung/a30s/lineage_a30s.mk
 COMMON_LUNCH_CHOICES := \
     lineage_a30s-eng \
     lineage_a30s-user \
