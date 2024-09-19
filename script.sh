@@ -28,7 +28,48 @@ echo "======= Export Done ======"
 # Set up build environment
 . build/envsetup.sh
 echo "====== Envsetup Done ======="
+# Step 3: Modify and rename files after creation
+# List all files in a10 directory
+echo "Listing all files in the a10 directory:"
+if [ -d "device/samsung/a10" ]; then
+    find device/samsung/a10 -type f
+fi
 
+    cat > device/samsung/a10/lineage_a10.mk << 'EOF'
+# Copyright (C) 2018 The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+# Inherit device configuration
+$(call inherit-product, device/samsung/a10/device.mk)
+# Inherit some common LineageOS stuff.
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Device identifier
+PRODUCT_DEVICE := a10
+PRODUCT_NAME := lineage_a10
+PRODUCT_MODEL := SM-A105F
+PRODUCT_BRAND := samsung
+PRODUCT_MANUFACTURER := samsung
+PRODUCT_GMS_CLIENTID_BASE := android-samsung
+EOF
+fi
+# Modify AndroidProducts.mk for A10
+if [ -f "device/samsung/a10/AndroidProducts.mk" ]; then
+    echo "Modifying AndroidProducts.mk for A10..."
+    
+    # Overwrite AndroidProducts.mk with the desired contents
+    cat > device/samsung/a10/AndroidProducts.mk << 'EOF'
+PRODUCT_MAKEFILES := \
+    device/samsung/a10/lineage_a10.mk
+COMMON_LUNCH_CHOICES := \
+    lineage_a10-eng \
+    lineage_a10-user \
+    lineage_a10-userdebug
+EOF
+fi
 # Step 4: Continue with the build process
 
 # Build for A10
