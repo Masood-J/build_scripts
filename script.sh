@@ -68,7 +68,7 @@ SYSTEMUI_OPTIMIZE_JAVA := true
 # SigmaDroid Variables
 SIGMA_CHIPSET="exynos7904"
 SIGMA_MAINTAINER="Masood"
-SIGMA_DEVICE="a10"
+SIGMA_DEVICE="a20"
 
 # Build package
 WITH_GMS := false
