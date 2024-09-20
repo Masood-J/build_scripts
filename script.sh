@@ -212,14 +212,65 @@ if [ -f "device/samsung/a30/lineage_a30.mk" ]; then
     mv device/samsung/a30/lineage_a30.mk device/samsung/a30/sigma_a30.mk
     
     # Overwrite sigma_a30.mk with the desired contents
-    cat > device/samsung/a30/sigma_a30.mk << 'EOF'
-# Similar configuration for A30
-# Modify accordingly based on chipset and device-specific details
+   cat > device/samsung/a30/sigma_a30.mk << 'EOF'
+# Copyright (C) 2018 The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
+# Inherit device configuration
+$(call inherit-product, device/samsung/a30/device.mk)
+
+# Inherit some common rom stuff
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+
+BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
+
+# Rom Specific Flags
+TARGET_FACE_UNLOCK_SUPPORTED := true
+TARGET_SUPPORTS_QUICK_TAP := true
+TARGET_BOOT_ANIMATION_RES := 1080
+SYSTEM_OPTIMIZE_JAVA := true
+SYSTEMUI_OPTIMIZE_JAVA := true
+
+# SigmaDroid Variables
 SIGMA_CHIPSET="exynos7904"
+SIGMA_MAINTAINER="Masood"
 SIGMA_DEVICE="a30"
+
+# Build package
+WITH_GMS := false
+
+# Launcher
+TARGET_DEFAULT_PIXEL_LAUNCHER := true
+TARGET_PREBUILT_LAWNCHAIR_LAUNCHER := true
+
+# Blur
+TARGET_SUPPORTS_BLUR := false
+
+# Pixel features
+TARGET_ENABLE_PIXEL_FEATURES := false
+
+# Use Google telephony framework
+TARGET_USE_GOOGLE_TELEPHONY := true
+
+# Touch Gestures
+TARGET_SUPPORTS_TOUCHGESTURES := true
+
+# Debugging
+TARGET_INCLUDE_MATLOG := false
+
+# Device identifier
 PRODUCT_DEVICE := a30
 PRODUCT_NAME := sigma_a30
 PRODUCT_MODEL := SM-A305F
+PRODUCT_BRAND := samsung
+PRODUCT_MANUFACTURER := samsung
+PRODUCT_GMS_CLIENTID_BASE := android-samsung
 EOF
 fi
 
@@ -247,14 +298,64 @@ if [ -f "device/samsung/a30s/lineage_a30s.mk" ]; then
     mv device/samsung/a30s/lineage_a30s.mk device/samsung/a30s/sigma_a30s.mk
     
     # Overwrite sigma_a30s.mk with the desired contents
-    cat > device/samsung/a30s/sigma_a30s.mk << 'EOF'
-# Similar configuration for A30s
-# Modify accordingly based on chipset and device-specific details
+   cat > device/samsung/a30s/sigma_a30s.mk << 'EOF'
+# Similar configuration for A30s with appropriate flags and values
+
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
+# Inherit device configuration
+$(call inherit-product, device/samsung/a30s/device.mk)
+
+# Inherit some common rom stuff
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+
+BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
+
+# Rom Specific Flags
+TARGET_FACE_UNLOCK_SUPPORTED := true
+TARGET_SUPPORTS_QUICK_TAP := true
+TARGET_BOOT_ANIMATION_RES := 1080
+SYSTEM_OPTIMIZE_JAVA := true
+SYSTEMUI_OPTIMIZE_JAVA := true
+
+# SigmaDroid Variables
 SIGMA_CHIPSET="exynos7904"
+SIGMA_MAINTAINER="Masood"
 SIGMA_DEVICE="a30s"
+
+# Build package
+WITH_GMS := false
+
+# Launcher
+TARGET_DEFAULT_PIXEL_LAUNCHER := true
+TARGET_PREBUILT_LAWNCHAIR_LAUNCHER := true
+
+# Blur
+TARGET_SUPPORTS_BLUR := false
+
+# Pixel features
+TARGET_ENABLE_PIXEL_FEATURES := false
+
+# Use Google telephony framework
+TARGET_USE_GOOGLE_TELEPHONY := true
+
+# Touch Gestures
+TARGET_SUPPORTS_TOUCHGESTURES := true
+
+# Debugging
+TARGET_INCLUDE_MATLOG := false
+
+# Device identifier
 PRODUCT_DEVICE := a30s
 PRODUCT_NAME := sigma_a30s
 PRODUCT_MODEL := SM-A307F
+PRODUCT_BRAND := samsung
+PRODUCT_MANUFACTURER := samsung
+PRODUCT_GMS_CLIENTID_BASE := android-samsung
 EOF
 fi
 
@@ -282,14 +383,64 @@ if [ -f "device/samsung/a40/lineage_a40.mk" ]; then
     mv device/samsung/a40/lineage_a40.mk device/samsung/a40/sigma_a40.mk
     
     # Overwrite sigma_a40.mk with the desired contents
-    cat > device/samsung/a40/sigma_a40.mk << 'EOF'
-# Similar configuration for A40
-# Modify accordingly based on chipset and device-specific details
+   cat > device/samsung/a40/sigma_a40.mk << 'EOF'
+# Similar configuration for A40 with appropriate flags and values
+
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
+# Inherit device configuration
+$(call inherit-product, device/samsung/a40/device.mk)
+
+# Inherit some common rom stuff
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+
+BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
+
+# Rom Specific Flags
+TARGET_FACE_UNLOCK_SUPPORTED := true
+TARGET_SUPPORTS_QUICK_TAP := true
+TARGET_BOOT_ANIMATION_RES := 1080
+SYSTEM_OPTIMIZE_JAVA := true
+SYSTEMUI_OPTIMIZE_JAVA := true
+
+# SigmaDroid Variables
 SIGMA_CHIPSET="exynos7904"
+SIGMA_MAINTAINER="Masood"
 SIGMA_DEVICE="a40"
+
+# Build package
+WITH_GMS := false
+
+# Launcher
+TARGET_DEFAULT_PIXEL_LAUNCHER := true
+TARGET_PREBUILT_LAWNCHAIR_LAUNCHER := true
+
+# Blur
+TARGET_SUPPORTS_BLUR := false
+
+# Pixel features
+TARGET_ENABLE_PIXEL_FEATURES := false
+
+# Use Google telephony framework
+TARGET_USE_GOOGLE_TELEPHONY := true
+
+# Touch Gestures
+TARGET_SUPPORTS_TOUCHGESTURES := true
+
+# Debugging
+TARGET_INCLUDE_MATLOG := false
+
+# Device identifier
 PRODUCT_DEVICE := a40
 PRODUCT_NAME := sigma_a40
 PRODUCT_MODEL := SM-A405F
+PRODUCT_BRAND := samsung
+PRODUCT_MANUFACTURER := samsung
+PRODUCT_GMS_CLIENTID_BASE := android-samsung
 EOF
 fi
 
