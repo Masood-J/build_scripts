@@ -24,7 +24,7 @@ echo "============="
 export BUILD_USERNAME=Masood
 export BUILD_HOSTNAME=crave
 export ALPHA_MAINTAINER=Masood
-export ALPHA_BUILD_TYPE= Official
+export ALPHA_BUILD_TYPE=Official
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 
 
