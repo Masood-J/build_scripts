@@ -3,7 +3,7 @@
 rm -rf .repo/local_manifests/
 
 # repo init rom
-repo init -u https://github.com/StatiXOS/android_manifest.git -b udc-qpr3
+repo init -u https://github.com/AOSPA/manifest -b uvite
 echo "=================="
 echo "Repo init success"
 echo "=================="
@@ -32,7 +32,7 @@ echo "======= Export Done ======"
 # List all files in a10 directory
 # Create or overwrite miku_a10.mk with the desired content
 echo "Creating or overwriting genesis_a10.mk..."
-cat > device/samsung/a10/statix_a10.mk << 'EOF'
+cat > device/samsung/a10/aospa_a10.mk << 'EOF'
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 
@@ -44,38 +44,28 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit device configuration
 $(call inherit-product, device/samsung/a10/device.mk)
 
-# Inherit StatiX common configuration
-$(call inherit-product, vendor/statix/config/common.mk)
-$(call inherit-product, vendor/statix/config/gsm.mk)
-
-# Include Pixel Launcher
-INCLUDE_PIXEL_LAUNCHER := true
-
 BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
 
 # Device identifier
 PRODUCT_DEVICE := a10
-PRODUCT_NAME := statix_a10
+PRODUCT_NAME := aospa_a10
 PRODUCT_MODEL := SM-A105F
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
 EOF
-# Modify AndroidProducts.mk for A10
-if [ -f "device/samsung/a10/AndroidProducts.mk" ]; then
-    echo "Modifying AndroidProducts.mk for A10..."
     
     # Overwrite AndroidProducts.mk with the desired contents
-    cat > device/samsung/a10/AndroidProducts.mk << 'EOF'
+cat > device/samsung/a10/AndroidProducts.mk << 'EOF'
 PRODUCT_MAKEFILES := \
-    device/samsung/a10/statix_a10.mk
+    device/samsung/a10/aospa_a10.mk
 COMMON_LUNCH_CHOICES := \
-    statix_a10-eng \
-    statix_a10-user \
-    statix_a10-userdebug
+    aospa_a10-eng \
+    aospa_a10-user \
+    aospa_a10-userdebug
 EOF
-fi
+
 # Step 4: Continue with the build process
 
 # Build for A10
-brunch statix_a10-ap2a-user
+./rom-build.sh a10
