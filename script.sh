@@ -3,7 +3,7 @@
 rm -rf .repo/local_manifests/
 
 # repo init rom
-repo init -u https://github.com/LineageOS/android.git -b lineage-21.0 --git-lfs
+repo init -u https://github.com/StatiXOS/android_manifest.git -b udc-qpr3
 echo "=================="
 echo "Repo init success"
 echo "=================="
