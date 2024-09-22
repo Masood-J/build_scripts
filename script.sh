@@ -3,7 +3,7 @@
 rm -rf .repo/local_manifests/
 
 # repo init rom
-repo init -u https://github.com/alphadroid-project/manifest -b alpha-14 --git-lfs
+repo init -u https://github.com/GenesisOS/manifest.git -b utopia-3.0 --git-lfs
 echo "=================="
 echo "Repo init success"
 echo "=================="
@@ -23,23 +23,21 @@ echo "============="
 # Export
 export BUILD_USERNAME=Masood
 export BUILD_HOSTNAME=crave
-export ALPHA_MAINTAINER=Masood
-export ALPHA_BUILD_TYPE=Official
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 
 
 echo "======= Export Done ======"
 
 # Set up build environment
-. build/envsetup.sh
+source build/envsetup.sh
 echo "====== Envsetup Done ======="
 
 # Step 3: Modify and rename files after creation
 
 # List all files in a10 directory
 # Create or overwrite miku_a10.mk with the desired content
-echo "Creating or overwriting lineage_a10.mk..."
-cat > device/samsung/a10/lineage_a10.mk << 'EOF'
+echo "Creating or overwriting genesis_a10.mk..."
+cat > device/samsung/a10/genesis_a10.mk << 'EOF'
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 
@@ -57,21 +55,9 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
 
-# Rom Specific Flags
-TARGET_HAS_UDFPS := true
-TARGET_ENABLE_BLUR := false
-TARGET_EXCLUDES_AUDIOFX := true
-TARGET_FACE_UNLOCK_SUPPORTED := true
-TARGET_BUILD_PACKAGE := 1
-TARGET_LAUNCHER := 1
-
-# Maintainer
-ALPHA_BUILD_TYPE := Official
-ALPHA_MAINTAINER := Masood
-
 # Device identifier
 PRODUCT_DEVICE := a10
-PRODUCT_NAME := lineage_a10
+PRODUCT_NAME := genesis_a10
 PRODUCT_MODEL := SM-A105F
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
@@ -85,12 +71,12 @@ if [ -f "device/samsung/a10/AndroidProducts.mk" ]; then
     # Overwrite AndroidProducts.mk with the desired contents
     cat > device/samsung/a10/AndroidProducts.mk << 'EOF'
 PRODUCT_MAKEFILES := \
-    device/samsung/a10/lineage_a10.mk
+    device/samsung/a10/genesis_a10.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_a10-eng \
-    lineage_a10-user \
-    lineage_a10-userdebug
+    genesis_a10-eng \
+    genesis_a10-user \
+    genesis_a10-userdebug
 EOF
 fi
 
@@ -98,4 +84,4 @@ fi
 # Step 4: Continue with the build process
 
 # Build for A10
-lunch lineage_a10-user && make installclean && make bacon 
+lunch genesis_a10-user && make installclean && mka genesis 
