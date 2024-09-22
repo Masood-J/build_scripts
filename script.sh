@@ -48,6 +48,9 @@ $(call inherit-product, device/samsung/a10/device.mk)
 $(call inherit-product, vendor/statix/config/common.mk)
 $(call inherit-product, vendor/statix/config/gsm.mk)
 
+# Include Pixel Launcher
+INCLUDE_PIXEL_LAUNCHER := true
+
 BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
 
 # Device identifier
