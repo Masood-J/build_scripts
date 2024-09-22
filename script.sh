@@ -68,4 +68,4 @@ EOF
 # Step 4: Continue with the build process
 
 # Build for A10
-./rom-build.sh a10
+lunch aospa_a10-user && ./rom-build.sh a10
