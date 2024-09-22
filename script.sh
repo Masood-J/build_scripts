@@ -31,6 +31,12 @@ echo "======= Export Done ======"
 . build/envsetup.sh
 # List all files in a10 directory
 # Create or overwrite miku_a10.mk with the desired content
+
+echo "Listing all files in the a10 directory:"
+if [ -d "device/samsung/a10" ]; then
+    find device/samsung/a10 -type f
+fi
+
 echo "Creating or overwriting genesis_a10.mk..."
 cat > device/samsung/a10/aospa_a10.mk << 'EOF'
 # Copyright (C) 2018 The LineageOS Project
