@@ -51,7 +51,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/samsung/a10/device.mk)
 
 # Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/genesis/config/common_full_phone.mk)
 
 BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
 
