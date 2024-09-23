@@ -39,7 +39,7 @@ if [ -d "device/samsung/a10" ]; then
 fi
     
     # Overwrite sigma_a30s.mk with the desired contents
-    cat > device/samsung/a10/genesis_a10.mk << 'EOF'
+cat > device/samsung/a10/genesis_a10.mk << 'EOF'
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 
@@ -66,7 +66,7 @@ EOF
 
 # Modify AndroidProducts.mk for A30s
     # Overwrite AndroidProducts.mk with the desired contents
-    cat > device/samsung/a10/AndroidProducts.mk << 'EOF'
+cat > device/samsung/a10/AndroidProducts.mk << 'EOF'
 PRODUCT_MAKEFILES := \
     device/samsung/a10/genesis_a10.mk
 
