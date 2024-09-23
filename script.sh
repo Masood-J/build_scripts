@@ -3,7 +3,7 @@
 rm -rf .repo/local_manifests/
 
 # repo init rom
-repo init -u https://github.com/Miku-UI/manifesto -b Udon_v2
+repo init -u https://github.com/GenesisOS/manifest.git -b utopia-3.0 --git-lfs
 echo "=================="
 echo "Repo init success"
 echo "=================="
@@ -37,13 +37,6 @@ echo "Listing all files in the a10 directory:"
 if [ -d "device/samsung/a10" ]; then
     find device/samsung/a10 -type f
 fi
-
-# A30s modifications
-if [ -f "device/samsung/a10/lineage_a10.mk" ]; then
-    echo "Renaming and modifying lineage_a10.mk to genesis_a10.mk..."
-    
-    # Rename the file
-    mv device/samsung/a10/lineage_a10.mk device/samsung/a10/genesis_a10.mk
     
     # Overwrite sigma_a30s.mk with the desired contents
     cat > device/samsung/a10/genesis_a10.mk << 'EOF'
@@ -69,12 +62,9 @@ PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
 EOF
-fi
+
 
 # Modify AndroidProducts.mk for A30s
-if [ -f "device/samsung/a10/AndroidProducts.mk" ]; then
-    echo "Modifying AndroidProducts.mk for A10..."
-    
     # Overwrite AndroidProducts.mk with the desired contents
     cat > device/samsung/a10/AndroidProducts.mk << 'EOF'
 PRODUCT_MAKEFILES := \
@@ -85,7 +75,7 @@ COMMON_LUNCH_CHOICES := \
     genesis_a10-user \
     genesis_a10-userdebug
 EOF
-fi
+
 
 
 # Step 4: Continue with the build process
