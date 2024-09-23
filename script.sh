@@ -38,7 +38,7 @@ if [ -d "device/samsung/a10" ]; then
     find device/samsung/a10 -type f
 fi
 
-cat > device/samsung/a10/genesis_a10.mk << 'EOF'
+cat > device/samsung/a10/lineage_a10.mk << 'EOF'
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 # Inherit from those products. Most specific first.
@@ -75,7 +75,7 @@ EOF
 # Step 4: Continue with the build process
 
 # Build for A10
-lunch genesis_a10-user
+lunch lineage_a10-ap2a-user
 make installclean
-mka genesis
+mka bacon
 
