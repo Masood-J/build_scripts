@@ -3,7 +3,7 @@
 rm -rf .repo/local_manifests/
 
 # repo init rom
-repo init -u https://github.com/GenesisOS/manifest.git -b utopia-3.0 --git-lfs
+repo init -u https://github.com/crdroidandroid/android.git -b 14.0 --git-lfs
 echo "=================="
 echo "Repo init success"
 echo "=================="
@@ -27,7 +27,7 @@ export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 echo "======= Export Done ======"
 
 # Set up build environment
-source build/envsetup.sh
+. build/envsetup.sh
 echo "====== Envsetup Done ======="
 
 # Step 3: Modify and rename files after creation
@@ -50,12 +50,12 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/samsung/a10/device.mk)
 
 # Inherit some common GenesisOS stuff.
-$(call inherit-product, vendor/genesis/config/common_full_phone.mk)
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
 # Device identifier
 PRODUCT_DEVICE := a10
-PRODUCT_NAME := genesis_a10
+PRODUCT_NAME := lineage_a10
 PRODUCT_MODEL := SM-A105F
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
@@ -65,11 +65,11 @@ EOF
     # Overwrite AndroidProducts.mk with the desired contents
 cat > device/samsung/a10/AndroidProducts.mk << 'EOF'
 PRODUCT_MAKEFILES := \
-    device/samsung/a10/genesis_a10.mk
+    device/samsung/a10/lineage_a10.mk
 COMMON_LUNCH_CHOICES := \
-    genesis_a10-eng \
-    genesis_a10-user \
-    genesis_a10-userdebug
+    lineage_a10-eng \
+    lineage_a10-user \
+    lineage_a10-userdebug
 EOF
     
 # Step 4: Continue with the build process
