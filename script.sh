@@ -34,11 +34,11 @@ echo "====== Envsetup Done ======="
 
 # List all files in a10 directory
 echo "Listing all files in the a10 directory:"
-if [ -d "device/samsung/a10" ]; then
-    find device/samsung/a10 -type f
+if [ -d "device/samsung" ]; then
+    find device/samsung -type f
 fi
 
-cat > device/samsung/a10/lineage_a10.mk << 'EOF'
+cat > device/samsung/lineage_a10.mk << 'EOF'
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 # Inherit from those products. Most specific first.
@@ -63,9 +63,9 @@ PRODUCT_GMS_CLIENTID_BASE := android-samsung
 EOF
 # Modify AndroidProducts.mk for A30s
     # Overwrite AndroidProducts.mk with the desired contents
-cat > device/samsung/a10/AndroidProducts.mk << 'EOF'
+cat > device/samsung/AndroidProducts.mk << 'EOF'
 PRODUCT_MAKEFILES := \
-    device/samsung/a10/lineage_a10.mk
+    device/samsung/lineage_a10.mk
 COMMON_LUNCH_CHOICES := \
     lineage_a10-eng \
     lineage_a10-user \
