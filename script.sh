@@ -34,7 +34,7 @@ echo "====== Envsetup Done ======="
 
 # List all files in a10 directory
 echo "Listing all files in the a10 directory:"
-if [ -d "device/samsung" ]; then
+if [ -d "device/samsung/a10" ]; then
     find device/samsung/a10 -type f
 fi
 
@@ -47,12 +47,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit device configuration
-$(call inherit-product, device/samsung/device.mk)
+$(call inherit-product, device/samsung/a10/device.mk)
 
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
 # Device identifier
 PRODUCT_DEVICE := a10
 PRODUCT_NAME := lineage_a10
@@ -63,9 +62,9 @@ PRODUCT_GMS_CLIENTID_BASE := android-samsung
 EOF
 # Modify AndroidProducts.mk for A30s
     # Overwrite AndroidProducts.mk with the desired contents
-cat > device/samsung/AndroidProducts.mk << 'EOF'
+cat > device/samsung/a10/AndroidProducts.mk << 'EOF'
 PRODUCT_MAKEFILES := \
-    device/samsung/lineage_a10.mk
+    device/samsung/a10/lineage_a10.mk
 COMMON_LUNCH_CHOICES := \
     lineage_a10-eng \
     lineage_a10-user \
