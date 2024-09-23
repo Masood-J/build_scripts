@@ -35,10 +35,10 @@ echo "====== Envsetup Done ======="
 # List all files in a10 directory
 echo "Listing all files in the a10 directory:"
 if [ -d "device/samsung" ]; then
-    find device/samsung -type f
+    find device/samsung/a10 -type f
 fi
 
-cat > device/samsung/lineage_a10.mk << 'EOF'
+cat > device/samsung/a10/lineage_a10.mk << 'EOF'
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 # Inherit from those products. Most specific first.
