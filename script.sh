@@ -24,21 +24,10 @@ echo "============="
 export BUILD_USERNAME=Masood
 export BUILD_HOSTNAME=crave
 echo "======= Export Done ======"
-
 # Set up build environment
 . build/envsetup.sh
 echo "====== Envsetup Done ======="
-
-# Step 3: Modify and rename files after creation
-
-# List all files in a10 directory
-echo "Listing all files in the a10 directory:"
-if [ -d "device/samsung/a10" ]; then
-    find device/samsung/a10 -type f
-fi
-
 # Build for A10
 lunch lineage_a10-ap2a-user
-make installclean
-mka bacon
-
+make installclean 
+mka bacon  
