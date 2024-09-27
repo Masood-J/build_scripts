@@ -54,7 +54,7 @@ EOF
 # Modify AndroidProducts.mk for A10
 cat > device/samsung/a10/AndroidProducts.mk << 'EOF'
 PRODUCT_MAKEFILES := \
-    device/samsung/a10/genesis_a10.mk
+    device/samsung/a10/afterlife_a10.mk
 COMMON_LUNCH_CHOICES := \
     afterlife_a10-eng \
     afterlife_a10-user \
