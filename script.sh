@@ -3,7 +3,7 @@
 rm -rf .repo/local_manifests/
 
 # repo init rom
-repo init -u https://github.com/GenesisOS/manifest.git -b utopia-3.0 --git-lfs
+repo init --depth=1 -u https://github.com/AfterlifeOS/android_manifest.git -b 14 --git-lfs
 echo "=================="
 echo "Repo init success"
 echo "=================="
@@ -28,7 +28,7 @@ echo "======= Export Done ======"
 # Set up build environment
 . build/envsetup.sh
 echo "====== Envsetup Done ======="
-cat > device/samsung/a30/genesis_a30.mk << 'EOF'
+cat > device/samsung/a10/afterlife_a10.mk << 'EOF'
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 # Inherit from those products. Most specific first.
@@ -37,60 +37,28 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit device configuration
-$(call inherit-product, device/samsung/a30/device.mk)
+$(call inherit-product, device/samsung/a10/device.mk)
 # Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/genesis/config/common_full_phone.mk)
-# Set the maintainer property for the ROM
-PRODUCT_PROPERTY_OVERRIDES := ro.genesis.maintainer=Masood
+$(call inherit-product, vendor/afterlife/config/common_full_phone.mk)
+AFTERLIFE_GAPPS := false
+AFTERLIFE_MAINTAINER := Masood
 # Device identifier
-PRODUCT_DEVICE := a30
-PRODUCT_NAME := genesis_a30
-PRODUCT_MODEL := SM-A305F
+PRODUCT_DEVICE := a10
+PRODUCT_NAME := afterlife_a10
+PRODUCT_MODEL := SM-A105F
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
 EOF
 # Modify AndroidProducts.mk for A10
-cat > device/samsung/a30/AndroidProducts.mk << 'EOF'
+cat > device/samsung/a10/AndroidProducts.mk << 'EOF'
 PRODUCT_MAKEFILES := \
-    device/samsung/a30/genesis_a30.mk
+    device/samsung/a10/genesis_a10.mk
 COMMON_LUNCH_CHOICES := \
-    genesis_a30-eng \
-    genesis_a30-user \
-    genesis_a30-userdebug
-EOF
-
-cat > device/samsung/a30s/genesis_a30s.mk << 'EOF'
-# Copyright (C) 2018 The LineageOS Project
-# SPDX-License-Identifier: Apache-2.0
-# Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-# Inherit device configuration
-$(call inherit-product, device/samsung/a30s/device.mk)
-# Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/genesis/config/common_full_phone.mk)
-# Set the maintainer property for the ROM
-PRODUCT_PROPERTY_OVERRIDES := ro.genesis.maintainer=Masood
-# Device identifier
-PRODUCT_DEVICE := a30s
-PRODUCT_NAME := genesis_a30s
-PRODUCT_MODEL := SM-A307F
-PRODUCT_BRAND := samsung
-PRODUCT_MANUFACTURER := samsung
-PRODUCT_GMS_CLIENTID_BASE := android-samsung
-EOF
-# Modify AndroidProducts.mk for A10
-cat > device/samsung/a30s/AndroidProducts.mk << 'EOF'
-PRODUCT_MAKEFILES := \
-    device/samsung/a30s/genesis_a30s.mk
-COMMON_LUNCH_CHOICES := \
-    genesis_a30s-eng \
-    genesis_a30s-user \
-    genesis_a30s-userdebug
+    afterlife_a10-eng \
+    afterlife_a10-user \
+    afterlife_a10-userdebug
 EOF
 
 # Build for A10
-lunch genesis_a30-user && make installclean && mka genesis && lunch genesis_a30s-user && make installclean && mka genesis
+goafterlife a10
