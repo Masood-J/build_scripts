@@ -24,6 +24,7 @@ echo "============="
 export BUILD_USERNAME=Masood
 export BUILD_HOSTNAME=crave
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
+export AFTERLIFE_MAINTAINER=Masood
 echo "======= Export Done ======"
 # Set up build environment
 . build/envsetup.sh
