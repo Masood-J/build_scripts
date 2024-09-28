@@ -25,6 +25,8 @@ export BUILD_USERNAME=Masood
 export BUILD_HOSTNAME=crave
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 export AFTERLIFE_MAINTAINER=Masood
+export AFTERLIFE_GAPPS=false
+export AFTERLIFE_CORE=true
 echo "======= Export Done ======"
 # Set up build environment
 . build/envsetup.sh
@@ -41,7 +43,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/samsung/a10/device.mk)
 # Inherit some common AfterlifeOS stuff.
 $(call inherit-product, vendor/afterlife/config/common_full_phone.mk)
+TARGET_FACE_UNLOCK_SUPPORTED := true
+TARGET_SUPPORTS_BLUR := false
+TARGET_BOOT_ANIMATION_RES := 1080
 AFTERLIFE_GAPPS := false
+AFTERLIFE_CORE := false
 AFTERLIFE_MAINTAINER := Masood
 # Device identifier
 PRODUCT_DEVICE := a10
