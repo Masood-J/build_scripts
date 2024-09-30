@@ -58,6 +58,8 @@ COMMON_LUNCH_CHOICES := \
     lineage_a10-userdebug
 EOF
 
+
+rm -rf external/chromium-webview
 # Build for A10
 lunch lineage_a10-ap2a-user
 make installclean 
