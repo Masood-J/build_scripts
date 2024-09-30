@@ -41,7 +41,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/samsung/a10/device.mk)
 #after life stuff:
 $(call inherit-product, vendor/afterlife/config/common_full_phone.mk)
-AFTERLIFE_GAPPS := false
 AFTERLIFE_MAINTAINER := Masood
 # Device identifier
 PRODUCT_DEVICE := a10
