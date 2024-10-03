@@ -21,7 +21,7 @@ echo "Sync success"
 echo "============="
 
 # Export
-export BUILD_USERNAME=Masood•JoiningTheDerpFest
+export BUILD_USERNAME=Masood
 export BUILD_HOSTNAME=crave
 echo "======= Export Done ======"
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
