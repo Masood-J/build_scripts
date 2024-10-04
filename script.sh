@@ -1,34 +1,65 @@
 #!/bin/bash
 
+# Remove existing local manifests
 rm -rf .repo/local_manifests/
 
-# repo init rom
+# Initialize the repo for AOSPA (Uvite branch)
 repo init -u https://github.com/AOSPA/manifest -b uvite
 echo "=================="
 echo "Repo init success"
 echo "=================="
 
-# Local manifests
+# Clone local manifests
 git clone https://github.com/Masood-J/local_manifests.git -b A14-EF .repo/local_manifests
 echo "============================"
 echo "Local manifest clone success"
 echo "============================"
 
-# build
+# Sync the source using crave resync script
 /opt/crave/resync.sh
 echo "============="
 echo "Sync success"
 echo "============="
 
-# Export
+# Export build environment variables
 export BUILD_USERNAME=Masood
 export BUILD_HOSTNAME=crave
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 echo "======= Export Done ======"
-# Set up build environment
-. build/envsetup.sh
-echo "====== Envsetup Done ======="
 
+# Set up build environment
+echo "====== Envsetup Done ======"
+
+# Create the missing 'a10' directory if it doesn't exist
+mkdir -p vendor/aospa/products/a10
+
+# Write the aospa_a10.mk file
+cat <<EOF > vendor/aospa/products/a10/aospa_a10.mk
+# Copyright (C) 2018 The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+
+# Inherit from those products. Most specific first.
+\$(call inherit-product, \$(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
+\$(call inherit-product, \$(SRC_TARGET_DIR)/product/core_64_bit.mk)
+\$(call inherit-product, \$(SRC_TARGET_DIR)/product/full_base.mk)
+\$(call inherit-product, \$(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
+# Inherit device configuration
+\$(call inherit-product, device/samsung/a10/device.mk)
+
+# Inherit from the AOSPA configuration.
+\$(call inherit-product, vendor/aospa/target/product/aospa-target.mk)
+
+# Device identifier
+PRODUCT_DEVICE := a10
+PRODUCT_NAME := aospa_a10
+PRODUCT_MODEL := SM-A105F
+PRODUCT_BRAND := samsung
+PRODUCT_MANUFACTURER := samsung
+PRODUCT_GMS_CLIENTID_BASE := android-samsung
+EOF
+
+echo "====== aospa_a10.mk Created ======"
 
 # Build for A10
 ./rom-build.sh a10
