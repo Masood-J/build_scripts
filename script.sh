@@ -72,9 +72,9 @@ EOF
 cat > vendor/aospa/products/a10/aospa.dependencies << 'EOF'
 [
     {
-        "remote": "eureka",
+        "remote": "masood",
         "repository": "android_device_samsung_exynos7885",
-        "target_path": "device/samsung/a10",
+        "target_path": "device/samsung",
         "revision": "android-14"
     },
     {
