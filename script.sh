@@ -58,13 +58,12 @@ PRODUCT_MANUFACTURER := samsung
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
 EOF
 
-cat > device/samsung/a10/AndroidProducts.mk << 'EOF'
-# List the makefile for the A10 product
-PRODUCT_MAKEFILES += \
-    $(LOCAL_DIR)/a10/aospa_a10.mk
-
-# Define lunch combo only for A10
-COMMON_LUNCH_CHOICES += \
+cat > device/samsung/a30/AndroidProducts.mk << 'EOF'
+PRODUCT_MAKEFILES := \
+    device/samsung/a10/aospa_a10.mk
+COMMON_LUNCH_CHOICES := \
+    aospa_a10-eng \
+    aospa_a10-user \
     aospa_a10-userdebug
 EOF
 
