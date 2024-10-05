@@ -31,7 +31,9 @@ echo "======= Export Done ======"
 echo "====== Envsetup Done ======"
 
 # Create the missing 'a10' directory if it doesn't exist
+mkdir -p vendor/aospa/products/a10
 # Write the aospa_a10.mk file
+
 cat > vendor/aospa/products/a10/aospa_a10.mk << 'EOF'
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
