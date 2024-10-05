@@ -31,7 +31,7 @@ echo "======= Export Done ======"
 echo "====== Envsetup Done ======"
 
 # Create the missing 'a10' directory if it doesn't exist
-
+. build/envsetup.sh
 # Write the aospa_a10.mk file
 cat > device/samsung/a10/aospa_a10.mk << 'EOF'
 # Copyright (C) 2018 The LineageOS Project
