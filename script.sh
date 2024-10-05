@@ -31,10 +31,9 @@ echo "======= Export Done ======"
 echo "====== Envsetup Done ======"
 
 # Create the missing 'a10' directory if it doesn't exist
-mkdir -p vendor/aospa/products/a10
 
 # Write the aospa_a10.mk file
-cat > vendor/aospa/products/a10/aospa_a10.mk << 'EOF'
+cat > device/samsung/a10/aospa_a10.mk << 'EOF'
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 
@@ -59,7 +58,7 @@ PRODUCT_MANUFACTURER := samsung
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
 EOF
 
-cat > vendor/aospa/products/AndroidProducts.mk << 'EOF'
+cat > device/samsung/a10/AndroidProducts.mk << 'EOF'
 # List the makefile for the A10 product
 PRODUCT_MAKEFILES += \
     $(LOCAL_DIR)/a10/aospa_a10.mk
@@ -74,4 +73,4 @@ EOF
 echo "====== aospa_a10.mk Created ======"
 
 # Build for A10
-./rom-build.sh a10
+lunch aospa_a10-user && ./rom-build.sh a10
