@@ -24,7 +24,6 @@ echo "============="
 export BUILD_USERNAME=Masood
 export BUILD_HOSTNAME=crave
 export MIKU_MASTER=Masood
-export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 export MIKU_GAPPS=false
 export TARGET_WITH_KERNEL_SU=true
 echo "======= Export Done ======"
@@ -60,7 +59,8 @@ $(call inherit-product, device/samsung/a10/device.mk)
 # Inherit some common rom stuff
 $(call inherit-product, vendor/miku/build/product/miku_product.mk)
 
-BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
+# Boot animation
+TARGET_BOOT_ANIMATION_RES := 1080
 
 # Rom Specific Flags
 MIKU_GAPPS := false
