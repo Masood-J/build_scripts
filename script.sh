@@ -25,7 +25,6 @@ export BUILD_USERNAME=Masood
 export BUILD_HOSTNAME=crave
 export MIKU_MASTER=Masood
 export MIKU_GAPPS=false
-export TARGET_WITH_KERNEL_SU=true
 echo "======= Export Done ======"
 
 # Set up build environment
@@ -35,10 +34,7 @@ echo "====== Envsetup Done ======="
 # Step 3: Modify and rename files after creation
 
 # List all files in a10 directory
-echo "Listing all files in the a10 directory:"
-if [ -d "device/samsung/a10" ]; then
-    find device/samsung/a10 -type f
-fi
+
 
 # Check if lineage_a10.mk exists and rename it
 # Create or overwrite miku_a10.mk with the desired content
@@ -92,9 +88,14 @@ COMMON_LUNCH_CHOICES := \
 EOF
 fi
 
+echo "Listing all files in the a10 directory:"
+if [ -d "device/samsung/a10" ]; then
+    find device/samsung/a10 -type f
+fi
+
 # Step 4: Continue with the build process
 
 # Build for A10
-lunch miku_a10-ap2a-user && make installclean && make diva || brunch a10
+lunch miku_a10-ap2a-user && make installclean && make diva 
 
 
