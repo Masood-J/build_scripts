@@ -29,7 +29,7 @@ echo "======= Export Done ======"
 
 # Set up build environment
 echo "====== Envsetup Done ======"
-
+. build/envsetup.sh
 # Create the missing 'a10' directory if it doesn't exist
 mkdir -p vendor/aospa/products/a10
 # Write the aospa_a10.mk file
@@ -72,4 +72,4 @@ EOF
 echo "====== aospa_a10.mk Created ======"
 
 # Build for A10
-./rom-build.sh a10
+lunch aospa_a10-user && m
