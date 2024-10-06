@@ -96,6 +96,7 @@ fi
 # Step 4: Continue with the build process
 
 # Build for A10
-lunch miku_a10-ap2a-user && make installclean && make diva 
+lunch miku_a10-ap2a-user
+make diva 
 
 
