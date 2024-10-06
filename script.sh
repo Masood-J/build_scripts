@@ -9,7 +9,7 @@ echo "Repo init success"
 echo "=================="
 
 # Local manifests
-git clone https://github.com/Masood-J/local_manifests.git -b Sigma-14 .repo/local_manifests
+git clone https://github.com/Masood-J/local_manifests.git -b A14-EF .repo/local_manifests
 echo "============================"
 echo "Local manifest clone success"
 echo "============================"
@@ -42,17 +42,6 @@ if [ -d "device/samsung/a10" ]; then
 fi
 
 # Check if lineage_a10.mk exists and rename it
-if [ -f "device/samsung/a10/lineage_a10.mk" ]; then
-    echo "Renaming lineage_a10.mk to miku_a10.mk..."
-    mv device/samsung/a10/lineage_a10.mk device/samsung/a10/miku_a10.mk
-fi
-
-# Check if aosp_a10.mk exists and rename it
-if [ -f "device/samsung/a10/aosp_a10.mk" ]; then
-    echo "Renaming aosp_a10.mk to miku_a10.mk..."
-    mv device/samsung/a10/aosp_a10.mk device/samsung/a10/miku_a10.mk
-fi
-
 # Create or overwrite miku_a10.mk with the desired content
 echo "Creating or overwriting miku_a10.mk..."
 cat > device/samsung/a10/miku_a10.mk << 'EOF'
