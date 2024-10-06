@@ -3,13 +3,13 @@
 rm -rf .repo/local_manifests/
 
 # repo init rom
-repo init -u https://github.com/Miku-UI/manifesto -b Udon_v2
+repo init -u https://github.com/Miku-UI/manifesto -b TDA
 echo "=================="
 echo "Repo init success"
 echo "=================="
 
 # Local manifests
-git clone https://github.com/Masood-J/local_manifests.git -b A14-EF .repo/local_manifests
+git clone https://github.com/Masood-J/local_manifests.git -b A14-E .repo/local_manifests
 echo "============================"
 echo "Local manifest clone success"
 echo "============================"
@@ -96,7 +96,8 @@ fi
 # Step 4: Continue with the build process
 
 # Build for A10
-lunch miku_a10-ap2a-user
+lunch miku_a10-user
+make installclean
 make diva 
 
 
