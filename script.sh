@@ -72,4 +72,4 @@ EOF
 echo "====== aospa_a10.mk Created ======"
 
 # Build for A10
-lunch aospa_a10-user && m bacon || ./rom-build.sh a10
+./rom-build.sh a10
