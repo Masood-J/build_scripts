@@ -74,7 +74,14 @@ COMMON_LUNCH_CHOICES := \
 EOF
 
 # Write the aospa.dependencies file
-echo "====== aospa_a10.mk Created ======"
+echo "====== lineage_a10.mk Created ======"
 
-# Build for A10
-breakfast a10 && make installclean && brunch a10
+
+# Lunch
+breakfast a10 userdebug
+make installclean 
+echo "============="
+
+# Build ROM
+croot
+brunch a10 userdebug
