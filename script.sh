@@ -1,40 +1,40 @@
 #!/bin/bash
 
-# Remove existing local manifests
+# Remove existing local_manifests
 rm -rf .repo/local_manifests/
 
-# Initialize the repo for AOSPA (Uvite branch)
-repo init -u https://github.com/TenX-OS/manifest.git -b fourteen --git-lfs
+# Initialize git lfs
+git lfs install
+
+# repo init manifest
+repo init -u https://github.com/TenX-OS/manifest.git -b fourteen --git-lfs --depth=1
 echo "=================="
 echo "Repo init success"
 echo "=================="
 
-# Clone local manifests
-git clone https://github.com/Masood-J/local_manifests.git -b A14-EF .repo/local_manifests
+# Local manifests
+git clone https://github.com/Masood-J/local_manifests.git -b A14-EF --depth=1 .repo/local_manifests
 echo "============================"
 echo "Local manifest clone success"
 echo "============================"
 
-# Sync the source using crave resync script
-/opt/crave/resync.sh
+# Sync
+/opt/crave/resync.sh || repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 echo "============="
 echo "Sync success"
 echo "============="
+
 # Private keys
 git clone https://github.com/Trijal08/vendor_lineage-priv_keys.git vendor/lineage-priv/keys
 
-# Export build environment variables
+# Export
 export BUILD_USERNAME="Masood • 10XBetter"
-export BUILD_HOSTNAME=crave
+export BUILD_HOSTNAME="crave"
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 echo "======= Export Done ======"
 
-# Set up build environment
-echo "====== Envsetup Done ======"
-
 # Create the missing 'a10' directory if it doesn't exist
-# Write the aospa_a10.mk file
-
+# Write the lineage_a10.mk file
 cat > device/samsung/a10/lineage_a10.mk << 'EOF'
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
@@ -66,6 +66,7 @@ PRODUCT_MANUFACTURER := samsung
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
 EOF
 
+# Write the AndroidProducts.mk file
 cat > device/samsung/a10/AndroidProducts.mk << 'EOF'
 PRODUCT_MAKEFILES := \
     device/samsung/a10/lineage_a10.mk
@@ -74,14 +75,17 @@ COMMON_LUNCH_CHOICES := \
     lineage_a10-user \
     lineage_a10-userdebug
 EOF
+echo "==================="
+echo "= Finsihed writing files ="
+echo "==================="
 
-# Write the aospa.dependencies file
-echo "====== lineage_a10.mk Created ======"
-
+# Set up build environment
+source build/envsetup.sh
+echo "====== Envsetup Done ======="
 
 # Lunch
 breakfast a10 userdebug
-make installclean 
+make installclean -j$(nproc --all)
 echo "============="
 
 # Build ROM
