@@ -20,9 +20,11 @@ echo "============================"
 echo "============="
 echo "Sync success"
 echo "============="
+# Private keys
+git clone https://github.com/Trijal08/vendor_lineage-priv_keys.git vendor/lineage-priv/keys
 
 # Export build environment variables
-export BUILD_USERNAME=Masood
+export BUILD_USERNAME="Masood • 10XBetter"
 export BUILD_HOSTNAME=crave
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 echo "======= Export Done ======"
