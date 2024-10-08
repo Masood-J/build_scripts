@@ -31,6 +31,7 @@ git clone https://github.com/Trijal08/vendor_lineage-priv_keys.git vendor/lineag
 export BUILD_USERNAME="Masood • 10XBetter"
 export BUILD_HOSTNAME="crave"
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
+export WITH_GMS=false
 echo "======= Export Done ======"
 
 
