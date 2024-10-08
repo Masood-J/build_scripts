@@ -77,4 +77,4 @@ EOF
 echo "====== aospa_a10.mk Created ======"
 
 # Build for A10
-lunch lineage_a10-ap2a-userdebug && make installclean && mka bacon
+lunch lineage_a10-ap2a-userdebug && make installclean && mka bacon || breakfast a10 && make installclean && brunch a10
