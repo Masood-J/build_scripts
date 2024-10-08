@@ -52,7 +52,6 @@ $(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
 # SkylineUI Maintainer Flags
 SKYLINEUI_MAINTAINER := Masood
-CUSTOM_BUILD_TYPE := OFFICIAL
 
 TARGET_SUPPORTS_QUICK_TAP := true
 TARGET_BOOT_ANIMATION_RES := 1080
