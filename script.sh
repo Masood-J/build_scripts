@@ -33,7 +33,10 @@ export BUILD_HOSTNAME="crave"
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 echo "======= Export Done ======"
 
-# Create the missing 'a10' directory if it doesn't exist
+
+# Set up build environment
+source build/envsetup.sh
+
 # Write the lineage_a10.mk file
 cat > device/samsung/a10/lineage_a10.mk << 'EOF'
 # Copyright (C) 2018 The LineageOS Project
@@ -79,8 +82,7 @@ echo "==================="
 echo "= Finsihed writing files ="
 echo "==================="
 
-# Set up build environment
-source build/envsetup.sh
+
 echo "====== Envsetup Done ======="
 
 # Lunch
