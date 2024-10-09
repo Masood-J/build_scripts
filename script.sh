@@ -80,4 +80,6 @@ EOF
 echo "====== aospa_a10.mk Created ======"
 
 # Build for A10
-lunch aosp_a10-ap2a-user && make installclean && mka bacon
+lunch aosp_a10-ap2a-user 
+make installclean 
+mka bacon
