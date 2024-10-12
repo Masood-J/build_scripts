@@ -25,6 +25,7 @@ export BUILD_USERNAME=Masood
 export BUILD_HOSTNAME=crave
 echo "======= Export Done ======"
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
+export TARGET_USES_PICO_GAPPS=true
 # Set up build environment
 . build/envsetup.sh
 echo "====== Envsetup Done ======="
@@ -45,6 +46,8 @@ $(call inherit-product, vendor/derp/config/common_full_phone.mk)
 TARGET_NOT_USES_BLUR := true
 TARGET_BOOT_ANIMATION_RES := 1080
 TARGET_INCLUDE_LIVE_WALLPAPERS := false
+TARGET_USES_PICO_GAPPS :=true
+
 # Device identifier
 PRODUCT_DEVICE := a10
 PRODUCT_NAME := derp_a10
