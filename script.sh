@@ -46,7 +46,7 @@ $(call inherit-product, vendor/derp/config/common_full_phone.mk)
 TARGET_NOT_USES_BLUR := true
 TARGET_BOOT_ANIMATION_RES := 1080
 TARGET_INCLUDE_LIVE_WALLPAPERS := false
-TARGET_USES_PICO_GAPPS :=true
+TARGET_USES_PICO_GAPPS := true
 
 # Device identifier
 PRODUCT_DEVICE := a10
