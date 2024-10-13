@@ -30,7 +30,7 @@ export TARGET_USES_PICO_GAPPS=true
 . build/envsetup.sh
 echo "====== Envsetup Done ======="
 # List all files in a10 directory
-cat > device/samsung/a20/derp_a20.mk << 'EOF'
+cat > device/samsung/a30/derp_a30.mk << 'EOF'
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 # Inherit from those products. Most specific first.
@@ -39,7 +39,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit device configuration
-$(call inherit-product, device/samsung/a20/device.mk)
+$(call inherit-product, device/samsung/a30/device.mk)
 # Inherit some common derpfest stuff.
 $(call inherit-product, vendor/derp/config/common_full_phone.mk)
 
@@ -49,23 +49,23 @@ TARGET_INCLUDE_LIVE_WALLPAPERS := false
 TARGET_USES_PICO_GAPPS := true
 
 # Device identifier
-PRODUCT_DEVICE := a20
-PRODUCT_NAME := derp_a20
-PRODUCT_MODEL := SM-A205F
+PRODUCT_DEVICE := a30
+PRODUCT_NAME := derp_a30
+PRODUCT_MODEL := SM-A305F
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
 EOF
 # Modify AndroidProducts.mk for A10
-cat > device/samsung/a20/AndroidProducts.mk << 'EOF'
+cat > device/samsung/a30/AndroidProducts.mk << 'EOF'
 PRODUCT_MAKEFILES := \
-    device/samsung/a20/derp_a20.mk
+    device/samsung/a30/derp_a30.mk
 COMMON_LUNCH_CHOICES := \
-    derp_a20-eng \
-    derp_a20-user \
-    derp_a20-userdebug
+    derp_a30-eng \
+    derp_a30-user \
+    derp_a30-userdebug
 EOF
-cat > device/samsung/a20e/derp_a20e.mk << 'EOF'
+cat > device/samsung/a30s/derp_a30s.mk << 'EOF'
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 # Inherit from those products. Most specific first.
@@ -74,7 +74,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit device configuration
-$(call inherit-product, device/samsung/a20e/device.mk)
+$(call inherit-product, device/samsung/a30s/device.mk)
 # Inherit some common derpfest stuff.
 $(call inherit-product, vendor/derp/config/common_full_phone.mk)
 
@@ -84,23 +84,23 @@ TARGET_INCLUDE_LIVE_WALLPAPERS := false
 TARGET_USES_PICO_GAPPS := true
 
 # Device identifier
-PRODUCT_DEVICE := a20e
-PRODUCT_NAME := derp_a20e
-PRODUCT_MODEL := SM-A207K
+PRODUCT_DEVICE := a30s
+PRODUCT_NAME := derp_a30s
+PRODUCT_MODEL := SM-A307K
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
 EOF
 # Modify AndroidProducts.mk for A10
-cat > device/samsung/a20e/AndroidProducts.mk << 'EOF'
+cat > device/samsung/a30s/AndroidProducts.mk << 'EOF'
 PRODUCT_MAKEFILES := \
-    device/samsung/a20e/derp_a20e.mk
+    device/samsung/a30s/derp_a30s.mk
 COMMON_LUNCH_CHOICES := \
-    derp_a20e-eng \
-    derp_a20e-user \
-    derp_a20e-userdebug
+    derp_a30s-eng \
+    derp_a30s-user \
+    derp_a30s-userdebug
 EOF
 # Lunch
-lunch derp_a20-user && make installclean && mka derp && lunch derp_a20e-user && make installclean && mka derp
+lunch derp_a30-user && make installclean && mka derp && lunch derp_a30s-user && make installclean && mka derp
 
 
