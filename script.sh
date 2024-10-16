@@ -3,7 +3,7 @@
 rm -rf .repo/local_manifests/
 
 # repo init rom
-repo init -u https://github.com/crdroidandroid/android.git -b 14.0 --git-lfs
+repo init -u https://github.com/Evolution-X/manifest -b udc --git-lfs
 echo "=================="
 echo "Repo init success"
 echo "=================="
@@ -24,6 +24,7 @@ echo "============="
 export BUILD_USERNAME=Masood
 export BUILD_HOSTNAME=crave
 export TARGET_USES_PICO_GAPPS=true
+export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
 echo "======= Export Done ======"
 # Set up build environment
 . build/envsetup.sh
