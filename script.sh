@@ -101,7 +101,7 @@ COMMON_LUNCH_CHOICES := \
 EOF
 
     echo "AndroidProducts.mk modified successfully."
-fi
+    
 lunch lineage_a10-user
 make installclean
 m evolution
