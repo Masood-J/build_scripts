@@ -21,16 +21,14 @@ echo "Sync success"
 echo "============="
 
 # Export
-echo "======= Export Done ======"
-
-# Set up build environment
-export WITH_GMS=true
+export BUILD_USERNAME=Masood
+export BUILD_HOSTNAME=crave
 export TARGET_USES_PICO_GAPPS=true
 export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
+echo "======= Export Done ======"
+# Set up build environment
 . build/envsetup.sh
 echo "====== Envsetup Done ======="
-
-# Rename pixel-style_a10.mk to lineage_a10.mk after envsetup
 if [ -f "device/samsung/a10/pixel-style_a10.mk" ]; then
     echo "Renaming pixel-style_a10.mk to lineage_a10.mk..."
     mv device/samsung/a10/pixel-style_a10.mk device/samsung/a10/lineage_a10.mk
@@ -41,21 +39,17 @@ fi
 cat > device/samsung/a10/lineage_a10.mk << 'EOF'
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
-
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-
 # Inherit device configuration
 $(call inherit-product, device/samsung/a10/device.mk)
-
-# Inherit from common lineage configuration
+# Inherit some common LineageOS stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # ROM Flags
-BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
 EVO_BUILD_TYPE := Unofficial
 TARGET_DISABLE_EPPE := true
 TARGET_BOOT_ANIMATION_RES := 1080
@@ -66,20 +60,9 @@ TARGET_HAS_UDFPS := false
 TARGET_SCREEN_HEIGHT := 1520
 TARGET_SCREEN_WIDTH := 720
 
-# GMS
-WITH_GMS ?= false
-ifeq ($(WITH_GMS),true)
-ifeq ($(TARGET_USES_MINI_GAPPS),true)
-$(call inherit-product, vendor/gms/gms_mini.mk)
-else ifeq ($(TARGET_USES_PICO_GAPPS),true)
-$(call inherit-product, vendor/gms/gms_pico.mk)
-else
-$(call inherit-product, vendor/gms/gms_full.mk)
-endif
-endif
+TARGET_USES_PICO_GAPPS := true
 
-
-# Device identifier. This must come after all inclusions
+# Device identifier
 PRODUCT_DEVICE := a10
 PRODUCT_NAME := lineage_a10
 PRODUCT_MODEL := SM-A105F
@@ -87,21 +70,17 @@ PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
 EOF
-
-  
-
+# Modify AndroidProducts.mk for A10
 cat > device/samsung/a10/AndroidProducts.mk << 'EOF'
 PRODUCT_MAKEFILES := \
     device/samsung/a10/lineage_a10.mk
-
 COMMON_LUNCH_CHOICES := \
+    lineage_a10-eng \
     lineage_a10-user \
-    lineage_a10-userdebug \
-    lineage_a10-eng
+    lineage_a10-userdebug
 EOF
 
-    echo "AndroidProducts.mk modified successfully."
-    
+# Build for A10
 lunch lineage_a10-user
-make installclean
-m evolution
+make installclean 
+m evolution  
