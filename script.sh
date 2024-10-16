@@ -23,6 +23,7 @@ echo "============="
 # Export
 export BUILD_USERNAME=Masood
 export BUILD_HOSTNAME=crave
+export TARGET_USES_PICO_GAPPS=true
 echo "======= Export Done ======"
 # Set up build environment
 . build/envsetup.sh
@@ -39,6 +40,21 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/samsung/a10/device.mk)
 # Inherit some common LineageOS stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+
+# ROM Flags
+BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
+EVO_BUILD_TYPE := Unofficial
+TARGET_DISABLE_EPPE := true
+TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_BUILD_APERTURE_CAMERA := false
+TARGET_HAS_UDFPS := false
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 1520
+TARGET_SCREEN_WIDTH := 720
+
+TARGET_USES_PICO_GAPPS := true
+
 # Device identifier
 PRODUCT_DEVICE := a10
 PRODUCT_NAME := lineage_a10
@@ -58,6 +74,6 @@ COMMON_LUNCH_CHOICES := \
 EOF
 
 # Build for A10
-lunch lineage_a10-ap2a-user
+lunch lineage_a10-user
 make installclean 
-mka bacon  
+m evolution  
