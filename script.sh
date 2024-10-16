@@ -29,6 +29,13 @@ echo "======= Export Done ======"
 # Set up build environment
 . build/envsetup.sh
 echo "====== Envsetup Done ======="
+if [ -f "device/samsung/a10/pixel-style_a10.mk" ]; then
+    echo "Renaming pixel-style_a10.mk to lineage_a10.mk..."
+    mv device/samsung/a10/pixel-style_a10.mk device/samsung/a10/lineage_a10.mk
+    echo "Rename successful."
+else
+    echo "pixel-style_a10.mk not found. Skipping rename."
+fi
 cat > device/samsung/a10/lineage_a10.mk << 'EOF'
 # Copyright (C) 2018 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
@@ -43,7 +50,6 @@ $(call inherit-product, device/samsung/a10/device.mk)
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # ROM Flags
-BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
 EVO_BUILD_TYPE := Unofficial
 TARGET_DISABLE_EPPE := true
 TARGET_BOOT_ANIMATION_RES := 1080
