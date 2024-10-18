@@ -33,6 +33,7 @@ if [ -f "device/samsung/a30/pixel-style_a30.mk" ]; then
     echo "Renaming pixel-style_a30.mk to lineage_a30.mk..."
     mv device/samsung/a30/pixel-style_a30.mk device/samsung/a30/lineage_a30.mk
     mv device/samsung/a20/pixel-style_a20.mk device/samsung/a20/lineage_a20.mk
+    mv device/samsung/a30s/pixel-style_a30s.mk device/samsung/a30s/lineage_a30s.mk
     echo "Rename successful."
 else
     echo "pixel-style_a10.mk not found. Skipping rename."
@@ -125,6 +126,51 @@ COMMON_LUNCH_CHOICES := \
     lineage_a20-userdebug
 EOF
 
+cat > device/samsung/a30s/lineage_a30s.mk << 'EOF'
+# Copyright (C) 2018 The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+# Inherit device configuration
+$(call inherit-product, device/samsung/a30s/device.mk)
+# Inherit some common LineageOS stuff.
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+
+# ROM Flags
+EVO_BUILD_TYPE := Unofficial
+TARGET_DISABLE_EPPE := true
+TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_BUILD_APERTURE_CAMERA := false
+TARGET_HAS_UDFPS := false
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 1520
+TARGET_SCREEN_WIDTH := 720
+
+TARGET_USES_PICO_GAPPS := true
+
+# Device identifier
+PRODUCT_DEVICE := a30s
+PRODUCT_NAME := lineage_a30s
+PRODUCT_MODEL := SM-A307K
+PRODUCT_BRAND := samsung
+PRODUCT_MANUFACTURER := samsung
+PRODUCT_GMS_CLIENTID_BASE := android-samsung
+EOF
+# Modify AndroidProducts.mk for A10
+cat > device/samsung/a30s/AndroidProducts.mk << 'EOF'
+PRODUCT_MAKEFILES := \
+    device/samsung/a30s/lineage_a30s.mk
+COMMON_LUNCH_CHOICES := \
+    lineage_a30s-eng \
+    lineage_a30s-user \
+    lineage_a30s-userdebug
+EOF
+
+
 # Build for A10
-lunch lineage_a30-user && make installclean && m evolution && lunch lineage_a20-user && make installclean && m evolution
+lunch lineage_a30-user && make installclean && m evolution && lunch lineage_a20-user && make installclean && m evolution && lunch lineage_a30s-user && make installclean && m evolution
 
