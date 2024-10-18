@@ -170,7 +170,6 @@ COMMON_LUNCH_CHOICES := \
     lineage_a30s-userdebug
 EOF
 
-
 # Build for A10
 lunch lineage_a30-user && make installclean && m evolution && lunch lineage_a20-user && make installclean && m evolution && lunch lineage_a30s-user && make installclean && m evolution
 
