@@ -65,42 +65,8 @@ COMMON_LUNCH_CHOICES := \
     derp_a30-user \
     derp_a30-userdebug
 EOF
-cat > device/samsung/a30s/derp_a30s.mk << 'EOF'
-# Copyright (C) 2018 The LineageOS Project
-# SPDX-License-Identifier: Apache-2.0
-# Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-# Inherit device configuration
-$(call inherit-product, device/samsung/a30s/device.mk)
-# Inherit some common derpfest stuff.
-$(call inherit-product, vendor/derp/config/common_full_phone.mk)
 
-TARGET_NOT_USES_BLUR := true
-TARGET_BOOT_ANIMATION_RES := 1080
-TARGET_INCLUDE_LIVE_WALLPAPERS := false
-TARGET_USES_PICO_GAPPS := true
-
-# Device identifier
-PRODUCT_DEVICE := a30s
-PRODUCT_NAME := derp_a30s
-PRODUCT_MODEL := SM-A307K
-PRODUCT_BRAND := samsung
-PRODUCT_MANUFACTURER := samsung
-PRODUCT_GMS_CLIENTID_BASE := android-samsung
-EOF
-# Modify AndroidProducts.mk for A10
-cat > device/samsung/a30s/AndroidProducts.mk << 'EOF'
-PRODUCT_MAKEFILES := \
-    device/samsung/a30s/derp_a30s.mk
-COMMON_LUNCH_CHOICES := \
-    derp_a30s-eng \
-    derp_a30s-user \
-    derp_a30s-userdebug
-EOF
 # Lunch
-lunch derp_a30-user && make installclean && mka derp && lunch derp_a30s-user && make installclean && mka derp
+lunch derp_a30-user && make installclean && mka derp
 
 
