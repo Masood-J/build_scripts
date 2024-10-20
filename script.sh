@@ -23,6 +23,7 @@ echo "============="
 # Export
 export BUILD_USERNAME=Masood•JoiningTheDerpFest
 export BUILD_HOSTNAME=crave
+
 echo "======= Export Done ======"
 # Set up build environment
 . build/envsetup.sh
